@@ -34,9 +34,15 @@ describe("getTranslations", () => {
   });
 
   it("returns all required translation keys for every locale", () => {
-    const requiredNavKeys: (keyof ReturnType<typeof getTranslations>["nav"])[] = [
-      "platform", "intelligence", "accessibility", "deploy", "signIn", "getDemo"
-    ];
+    const requiredNavKeys: (keyof ReturnType<typeof getTranslations>["nav"])[] =
+      [
+        "platform",
+        "intelligence",
+        "accessibility",
+        "deploy",
+        "signIn",
+        "getDemo",
+      ];
     const locales: SupportedLocale[] = ["en", "es", "fr", "ar", "pt"];
     locales.forEach((locale) => {
       const t = getTranslations(locale);

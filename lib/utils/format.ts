@@ -34,7 +34,9 @@ export function getLoadColor(load: number): string {
 /**
  * Returns a semantic status label from a numeric percentage load.
  */
-export function getLoadStatus(load: number): "low" | "moderate" | "high" | "critical" {
+export function getLoadStatus(
+  load: number,
+): "low" | "moderate" | "high" | "critical" {
   if (load >= 90) return "critical";
   if (load >= 70) return "high";
   if (load >= 40) return "moderate";

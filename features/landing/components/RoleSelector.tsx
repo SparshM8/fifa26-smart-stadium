@@ -1,15 +1,13 @@
-"use client"
-import * as React from "react"
-import Link from "next/link"
-import { motion } from "framer-motion"
-import { Users, Shield, Bot, Map, ArrowRight } from "lucide-react"
+"use client";
+import * as React from "react";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { Users, Shield, Bot, Map, ArrowRight } from "lucide-react";
 
-
-
-import { useI18n } from "@/context/I18nContext"
+import { useI18n } from "@/context/I18nContext";
 
 export function RoleSelector() {
-  const { t } = useI18n()
+  const { t } = useI18n();
 
   const roles = [
     {
@@ -56,7 +54,7 @@ export function RoleSelector() {
       iconColor: "text-emerald-400",
       cta: t.roles.map.cta,
     },
-  ]
+  ];
 
   return (
     <section className="py-24 px-4" aria-labelledby="role-selector-heading">
@@ -87,12 +85,20 @@ export function RoleSelector() {
                 className={`group flex flex-col h-full bg-gradient-to-br ${role.gradient} border ${role.border} rounded-[24px] p-7 hover:scale-[1.02] transition-transform focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white`}
                 aria-label={`${role.label} — ${role.description}`}
               >
-                <div className={`w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center mb-5 ${role.iconColor}`}>
+                <div
+                  className={`w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center mb-5 ${role.iconColor}`}
+                >
                   <role.icon className="w-6 h-6" aria-hidden="true" />
                 </div>
-                <div className="font-heading text-xl font-bold text-white mb-2">{role.label}</div>
-                <p className="text-zinc-400 text-sm font-sans flex-1 leading-relaxed">{role.description}</p>
-                <div className={`mt-5 flex items-center gap-2 text-sm font-bold ${role.iconColor} group-hover:gap-3 transition-all`}>
+                <div className="font-heading text-xl font-bold text-white mb-2">
+                  {role.label}
+                </div>
+                <p className="text-zinc-400 text-sm font-sans flex-1 leading-relaxed">
+                  {role.description}
+                </p>
+                <div
+                  className={`mt-5 flex items-center gap-2 text-sm font-bold ${role.iconColor} group-hover:gap-3 transition-all`}
+                >
                   {role.cta}
                   <ArrowRight className="w-4 h-4" aria-hidden="true" />
                 </div>
@@ -102,5 +108,5 @@ export function RoleSelector() {
         </div>
       </div>
     </section>
-  )
+  );
 }

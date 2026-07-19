@@ -23,7 +23,9 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
   const [locale, setLocaleState] = React.useState<SupportedLocale>(() => {
     if (typeof window !== "undefined") {
       try {
-        const saved = localStorage.getItem(STORAGE_KEY) as SupportedLocale | null;
+        const saved = localStorage.getItem(
+          STORAGE_KEY,
+        ) as SupportedLocale | null;
         if (saved && SUPPORTED_LOCALES.some((l) => l.code === saved)) {
           return saved;
         }
@@ -57,7 +59,7 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
       t: getTranslations(locale),
       dir: getLocaleInfo(locale).dir,
     }),
-    [locale, setLocale]
+    [locale, setLocale],
   );
 
   return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;

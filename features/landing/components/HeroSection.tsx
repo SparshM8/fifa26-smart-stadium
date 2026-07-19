@@ -19,16 +19,19 @@ export function HeroSection() {
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.95]);
 
   return (
-    <section ref={containerRef} className="relative h-screen w-full flex items-center justify-center overflow-hidden">
+    <section
+      ref={containerRef}
+      className="relative h-screen w-full flex items-center justify-center overflow-hidden"
+    >
       {/* Background gradients */}
       <div className="absolute inset-0 bg-[#050505]" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-tr from-emerald-500/20 via-blue-500/10 to-transparent rounded-full blur-[120px] opacity-70 pointer-events-none" />
       <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-gradient-to-bl from-purple-500/15 via-rose-500/5 to-transparent rounded-full blur-[100px] opacity-50 pointer-events-none" />
-      
+
       {/* Grid Pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_20%,transparent_100%)]" />
 
-      <motion.div 
+      <motion.div
         style={{ opacity, scale }}
         className="relative z-10 text-center px-6 max-w-5xl mx-auto flex flex-col items-center"
       >
@@ -39,10 +42,12 @@ export function HeroSection() {
           className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-8"
         >
           <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-          <span className="text-sm font-medium text-zinc-300">{t.hero.badge}</span>
+          <span className="text-sm font-medium text-zinc-300">
+            {t.hero.badge}
+          </span>
         </motion.div>
 
-        <motion.h1 
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -51,7 +56,7 @@ export function HeroSection() {
           {t.hero.title}
         </motion.h1>
 
-        <motion.p 
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
@@ -60,13 +65,16 @@ export function HeroSection() {
           {t.hero.subtitle}
         </motion.p>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           className="flex flex-col sm:flex-row items-center gap-4"
         >
-          <Link href="/dashboard" className="h-12 px-8 rounded-full bg-white text-black font-semibold hover:scale-105 transition-transform flex items-center justify-center gap-2">
+          <Link
+            href="/dashboard"
+            className="h-12 px-8 rounded-full bg-white text-black font-semibold hover:scale-105 transition-transform flex items-center justify-center gap-2"
+          >
             {t.hero.ctaPrimary}
             <ChevronRight className="w-4 h-4" />
           </Link>

@@ -36,18 +36,29 @@ export function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-[#050505]/80 backdrop-blur-md border-b border-white/5" : "bg-transparent"
+        isScrolled
+          ? "bg-[#050505]/80 backdrop-blur-md border-b border-white/5"
+          : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-3" aria-label="StadiumOS AI — Home">
+        <Link
+          href="/"
+          className="flex items-center gap-3"
+          aria-label="StadiumOS AI — Home"
+        >
           <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.1)]">
             <Activity className="w-5 h-5 text-white" aria-hidden="true" />
           </div>
-          <span className="text-xl font-bold tracking-tight text-white">StadiumOS</span>
+          <span className="text-xl font-bold tracking-tight text-white">
+            StadiumOS
+          </span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-8" aria-label="Main navigation">
+        <nav
+          className="hidden md:flex items-center gap-8"
+          aria-label="Main navigation"
+        >
           {navLinks.map((item) => (
             <Link
               key={item.href}

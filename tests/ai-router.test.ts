@@ -38,7 +38,18 @@ describe("getAIResponse", () => {
   });
 
   it("returns a non-empty string for every response", () => {
-    const inputs = ["crowd", "medical", "food", "metro", "weather", "gate", "security", "volunteer", "wheelchair", "summarize"];
+    const inputs = [
+      "crowd",
+      "medical",
+      "food",
+      "metro",
+      "weather",
+      "gate",
+      "security",
+      "volunteer",
+      "wheelchair",
+      "summarize",
+    ];
     inputs.forEach((input) => {
       const { text } = getAIResponse(input);
       expect(text.length).toBeGreaterThan(10);

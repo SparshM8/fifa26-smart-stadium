@@ -14,7 +14,7 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-[#050505] text-foreground selection:bg-emerald-500/30 selection:text-emerald-200">
       <Navbar />
-      
+
       <main>
         <HeroSection />
         <LiveMatchCard />

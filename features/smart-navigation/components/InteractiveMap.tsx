@@ -1,24 +1,24 @@
-"use client"
-import * as React from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { LocationMarker } from "./LocationMarker"
+"use client";
+import * as React from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { LocationMarker } from "./LocationMarker";
 
 interface InteractiveMapProps {
-  layers: { heatmap: boolean; wheelchair: boolean; emergency: boolean }
-  activeRoute: string | null
-  onSelectRoute?: (route: string) => void
+  layers: { heatmap: boolean; wheelchair: boolean; emergency: boolean };
+  activeRoute: string | null;
+  onSelectRoute?: (route: string) => void;
 }
 
 // Coordinate mappings and route configurations for each destination
 const DESTINATIONS: Record<
   string,
   {
-    cx: number
-    cy: number
-    normalPath: string
-    wheelchairPath: string
-    color: string
-    label: string
+    cx: number;
+    cy: number;
+    normalPath: string;
+    wheelchairPath: string;
+    color: string;
+    label: string;
   }
 > = {
   Food: {
@@ -61,7 +61,7 @@ const DESTINATIONS: Record<
     color: "#8B5CF6", // Purple
     label: "Block 112, Row F, Seat 42",
   },
-}
+};
 
 // Seating Stand layout parameters with targets for interactive routing
 const SEATING_STANDS = [
@@ -69,15 +69,19 @@ const SEATING_STANDS = [
   { name: "SOUTH STAND", x: 400, y: 720, rotate: 0, target: "Parking" },
   { name: "WEST STAND", x: 80, y: 400, rotate: -90, target: "Medical" },
   { name: "EAST STAND", x: 720, y: 400, rotate: 90, target: "Restrooms" },
-]
+];
 
-export function InteractiveMap({ layers, activeRoute, onSelectRoute }: InteractiveMapProps) {
-  const destConfig = activeRoute ? DESTINATIONS[activeRoute] : null
+export function InteractiveMap({
+  layers,
+  activeRoute,
+  onSelectRoute,
+}: InteractiveMapProps) {
+  const destConfig = activeRoute ? DESTINATIONS[activeRoute] : null;
   const activePath = destConfig
     ? layers.wheelchair
       ? destConfig.wheelchairPath
       : destConfig.normalPath
-    : ""
+    : "";
 
   return (
     <div className="w-full h-full relative overflow-hidden bg-[#03050d] flex items-center justify-center">
@@ -123,16 +127,20 @@ export function InteractiveMap({ layers, activeRoute, onSelectRoute }: Interacti
               <stop offset="0%" stopColor="#00E5FF" stopOpacity="0.15" />
               <stop offset="100%" stopColor="#00E5FF" stopOpacity="0" />
             </radialGradient>
-            <filter id="glow-filter" x="-20%" y="-20%" width="140%" height="140%">
+            <filter
+              id="glow-filter"
+              x="-20%"
+              y="-20%"
+              width="140%"
+              height="140%"
+            >
               <feGaussianBlur stdDeviation="4" result="blur" />
               <feComposite in="SourceGraphic" in2="blur" operator="over" />
             </filter>
           </defs>
-
           {/* ──────────────────────────────────────────────────────────── */}
           {/* Stadium Architecture: Concentric Seating Tiers & Structure   */}
           {/* ──────────────────────────────────────────────────────────── */}
-
           {/* Outer Stadium Boundary */}
           <rect
             x="40"
@@ -155,7 +163,6 @@ export function InteractiveMap({ layers, activeRoute, onSelectRoute }: Interacti
             strokeWidth="2"
             opacity="0.15"
           />
-
           {/* Seating Tier Dividers */}
           {/* Outer Tier */}
           <rect
@@ -193,7 +200,6 @@ export function InteractiveMap({ layers, activeRoute, onSelectRoute }: Interacti
             strokeWidth="2"
             strokeDasharray="40 10"
           />
-
           {/* Sector dividers (aisles) radiating from pitch corners */}
           <path
             d="M 180 230 L 80 110 M 620 230 L 720 110 M 180 570 L 80 690 M 620 570 L 720 690"
@@ -205,7 +211,6 @@ export function InteractiveMap({ layers, activeRoute, onSelectRoute }: Interacti
             stroke="rgba(255,255,255,0.05)"
             strokeWidth="1.5"
           />
-
           {/* Seating Stand Labels */}
           {SEATING_STANDS.map((stand, i) => (
             <g
@@ -228,7 +233,8 @@ export function InteractiveMap({ layers, activeRoute, onSelectRoute }: Interacti
                 {stand.name}
               </text>
             </g>
-          ))}          {/* Cyber Football Pitch (3D Isometric Slab Projection) */}
+          ))}{" "}
+          {/* Cyber Football Pitch (3D Isometric Slab Projection) */}
           <g
             className="pointer-events-auto cursor-pointer group/pitch"
             onClick={() => onSelectRoute && onSelectRoute("My Seat")}
@@ -255,8 +261,14 @@ export function InteractiveMap({ layers, activeRoute, onSelectRoute }: Interacti
               opacity="0.8"
             />
             {/* 3D volumetric side edges */}
-            <polygon points="250,500 550,500 550,506 250,506" fill="rgba(0, 229, 255, 0.45)" />
-            <polygon points="550,300 550,500 556,500 556,300" fill="rgba(0, 229, 255, 0.25)" />
+            <polygon
+              points="250,500 550,500 550,506 250,506"
+              fill="rgba(0, 229, 255, 0.45)"
+            />
+            <polygon
+              points="550,300 550,500 556,500 556,300"
+              fill="rgba(0, 229, 255, 0.25)"
+            />
 
             {/* Grass Field Slab (Floating top layer) */}
             <rect
@@ -347,17 +359,51 @@ export function InteractiveMap({ layers, activeRoute, onSelectRoute }: Interacti
             <circle cx="513.5" cy="400" r="2" fill="rgba(255,255,255,0.5)" />
 
             {/* Corner Arcs */}
-            <path d="M 250 306 A 6 6 0 0 1 256 300" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
-            <path d="M 250 494 A 6 6 0 0 0 256 500" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
-            <path d="M 550 306 A 6 6 0 0 0 544 300" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
-            <path d="M 550 494 A 6 6 0 0 1 544 500" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
+            <path
+              d="M 250 306 A 6 6 0 0 1 256 300"
+              fill="none"
+              stroke="rgba(255,255,255,0.2)"
+              strokeWidth="1"
+            />
+            <path
+              d="M 250 494 A 6 6 0 0 0 256 500"
+              fill="none"
+              stroke="rgba(255,255,255,0.2)"
+              strokeWidth="1"
+            />
+            <path
+              d="M 550 306 A 6 6 0 0 0 544 300"
+              fill="none"
+              stroke="rgba(255,255,255,0.2)"
+              strokeWidth="1"
+            />
+            <path
+              d="M 550 494 A 6 6 0 0 1 544 500"
+              fill="none"
+              stroke="rgba(255,255,255,0.2)"
+              strokeWidth="1"
+            />
 
             {/* Goals */}
-            <rect x="244" y="378" width="6" height="44" fill="none" stroke="rgba(0, 229, 255, 0.5)" strokeWidth="1" />
-            <rect x="550" y="378" width="6" height="44" fill="none" stroke="rgba(0, 229, 255, 0.5)" strokeWidth="1" />
+            <rect
+              x="244"
+              y="378"
+              width="6"
+              height="44"
+              fill="none"
+              stroke="rgba(0, 229, 255, 0.5)"
+              strokeWidth="1"
+            />
+            <rect
+              x="550"
+              y="378"
+              width="6"
+              height="44"
+              fill="none"
+              stroke="rgba(0, 229, 255, 0.5)"
+              strokeWidth="1"
+            />
           </g>
-
-
           {/* ──────────────────────────────────────────────────────────── */}
           {/* Stadium Gates & Outer Security Nodes                         */}
           {/* ──────────────────────────────────────────────────────────── */}
@@ -435,7 +481,9 @@ export function InteractiveMap({ layers, activeRoute, onSelectRoute }: Interacti
                   duration: 1.6,
                   ease: "linear",
                 }}
-                style={{ filter: "drop-shadow(0 0 8px rgba(0, 229, 255, 0.75))" }}
+                style={{
+                  filter: "drop-shadow(0 0 8px rgba(0, 229, 255, 0.75))",
+                }}
               />
             </motion.svg>
           )}
@@ -457,9 +505,21 @@ export function InteractiveMap({ layers, activeRoute, onSelectRoute }: Interacti
                 transformOrigin: "bottom center",
               }}
             >
-              <svg width="40" height="50" viewBox="-20 -40 40 45" className="overflow-visible">
+              <svg
+                width="40"
+                height="50"
+                viewBox="-20 -40 40 45"
+                className="overflow-visible"
+              >
                 {/* Target Pulsing Base Ring */}
-                <circle cx="0" cy="0" r="10" fill="none" stroke={destConfig.color} strokeWidth="2">
+                <circle
+                  cx="0"
+                  cy="0"
+                  r="10"
+                  fill="none"
+                  stroke={destConfig.color}
+                  strokeWidth="2"
+                >
                   <animate
                     attributeName="r"
                     values="5;18"
@@ -474,7 +534,14 @@ export function InteractiveMap({ layers, activeRoute, onSelectRoute }: Interacti
                   />
                 </circle>
                 {/* 3D Pin Drop Shadow */}
-                <ellipse cx="0" cy="2" rx="6" ry="2.5" fill="black" opacity="0.4" />
+                <ellipse
+                  cx="0"
+                  cy="2"
+                  rx="6"
+                  ry="2.5"
+                  fill="black"
+                  opacity="0.4"
+                />
                 {/* 3D Pin Body */}
                 <path
                   d="M 0 0 C -10 -10 -15 -20 -15 -28 C -15 -38 -7 -43 0 -43 C 7 -43 15 -38 15 -28 C 15 -20 10 -10 0 0 Z"
@@ -538,11 +605,13 @@ export function InteractiveMap({ layers, activeRoute, onSelectRoute }: Interacti
             {/* Ambient neon scanning effect */}
             <div className="absolute inset-0 bg-gradient-to-b from-[var(--accent-cyan)]/5 to-transparent pointer-events-none" />
             <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-[var(--accent-cyan)] to-transparent opacity-85 animate-pulse" />
-            
+
             {/* Header / Venue info */}
             <div className="flex items-center justify-between text-[9px] font-bold text-[var(--accent-cyan)] tracking-widest uppercase font-mono">
               <span>FIFA WORLD CUP 2026</span>
-              <span className="px-1.5 py-0.5 rounded bg-[var(--accent-cyan)]/10 border border-[var(--accent-cyan)]/25">HOST VENUE</span>
+              <span className="px-1.5 py-0.5 rounded bg-[var(--accent-cyan)]/10 border border-[var(--accent-cyan)]/25">
+                HOST VENUE
+              </span>
             </div>
 
             <div className="text-zinc-400 text-[10.5px] font-mono tracking-wide flex items-center gap-1.5 mt-0.5">
@@ -553,11 +622,19 @@ export function InteractiveMap({ layers, activeRoute, onSelectRoute }: Interacti
             {/* Teams Match Scoreboard */}
             <div className="flex items-center justify-between py-2 border-t border-b border-white/5 my-1">
               <div className="flex items-center gap-2.5">
-                <span className="text-xs font-black text-white font-sans tracking-wide">ARGENTINA</span>
-                <span className="text-[10px] font-extrabold text-zinc-500 font-mono">VS</span>
-                <span className="text-xs font-black text-white font-sans tracking-wide">FRANCE</span>
+                <span className="text-xs font-black text-white font-sans tracking-wide">
+                  ARGENTINA
+                </span>
+                <span className="text-[10px] font-extrabold text-zinc-500 font-mono">
+                  VS
+                </span>
+                <span className="text-xs font-black text-white font-sans tracking-wide">
+                  FRANCE
+                </span>
               </div>
-              <div className="text-[10px] text-zinc-400 font-bold font-mono">UPCOMING</div>
+              <div className="text-[10px] text-zinc-400 font-bold font-mono">
+                UPCOMING
+              </div>
             </div>
 
             {/* Kickoff info & Quick route */}
@@ -576,10 +653,13 @@ export function InteractiveMap({ layers, activeRoute, onSelectRoute }: Interacti
         </div>
 
         {/* Current Location Marker */}
-        <div style={{ transform: "translateZ(40px)" }} className="absolute inset-0 pointer-events-none">
+        <div
+          style={{ transform: "translateZ(40px)" }}
+          className="absolute inset-0 pointer-events-none"
+        >
           <LocationMarker x="18.75%" y="50%" />
         </div>
       </motion.div>
     </div>
-  )
+  );
 }

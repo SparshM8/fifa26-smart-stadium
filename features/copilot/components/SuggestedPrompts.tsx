@@ -1,14 +1,18 @@
-"use client"
-import * as React from "react"
-import { motion } from "framer-motion"
+"use client";
+import * as React from "react";
+import { motion } from "framer-motion";
 
-export function SuggestedPrompts({ onSelect }: { onSelect?: (prompt: string) => void }) {
+export function SuggestedPrompts({
+  onSelect,
+}: {
+  onSelect?: (prompt: string) => void;
+}) {
   const prompts = [
     "Show me the crowd heatmap",
     "Where is the nearest medical team?",
     "Route VIPs from Gate A to Suite 4",
-    "Summarize active incidents"
-  ]
+    "Summarize active incidents",
+  ];
 
   return (
     <div className="flex flex-wrap gap-2 justify-center max-w-3xl mx-auto mb-6">
@@ -25,5 +29,5 @@ export function SuggestedPrompts({ onSelect }: { onSelect?: (prompt: string) => 
         </motion.button>
       ))}
     </div>
-  )
+  );
 }

@@ -40,7 +40,9 @@ export function LanguageSwitcher() {
       >
         <Globe className="w-4 h-4 text-zinc-400" aria-hidden="true" />
         <span className="font-bold">{currentLocale.flag}</span>
-        <span className="hidden sm:inline text-zinc-300 text-xs font-mono">{currentLocale.code.toUpperCase()}</span>
+        <span className="hidden sm:inline text-zinc-300 text-xs font-mono">
+          {currentLocale.code.toUpperCase()}
+        </span>
       </button>
 
       <AnimatePresence>
@@ -66,11 +68,16 @@ export function LanguageSwitcher() {
                 >
                   <span className="text-lg leading-none">{l.flag}</span>
                   <div className="flex-1">
-                    <div className="font-bold text-white text-sm">{l.nativeName}</div>
+                    <div className="font-bold text-white text-sm">
+                      {l.nativeName}
+                    </div>
                     <div className="text-xs text-zinc-500">{l.name}</div>
                   </div>
                   {l.code === locale && (
-                    <Check className="w-4 h-4 text-[var(--accent-cyan)] shrink-0" aria-hidden="true" />
+                    <Check
+                      className="w-4 h-4 text-[var(--accent-cyan)] shrink-0"
+                      aria-hidden="true"
+                    />
                   )}
                 </button>
               </li>

@@ -20,11 +20,35 @@ export interface Locale {
 
 /** All supported locales with metadata */
 export const SUPPORTED_LOCALES: Locale[] = [
-  { code: "en", name: "English", nativeName: "English", dir: "ltr", flag: "🇺🇸" },
-  { code: "es", name: "Spanish", nativeName: "Español", dir: "ltr", flag: "🇪🇸" },
-  { code: "fr", name: "French", nativeName: "Français", dir: "ltr", flag: "🇫🇷" },
+  {
+    code: "en",
+    name: "English",
+    nativeName: "English",
+    dir: "ltr",
+    flag: "🇺🇸",
+  },
+  {
+    code: "es",
+    name: "Spanish",
+    nativeName: "Español",
+    dir: "ltr",
+    flag: "🇪🇸",
+  },
+  {
+    code: "fr",
+    name: "French",
+    nativeName: "Français",
+    dir: "ltr",
+    flag: "🇫🇷",
+  },
   { code: "ar", name: "Arabic", nativeName: "العربية", dir: "rtl", flag: "🇸🇦" },
-  { code: "pt", name: "Portuguese", nativeName: "Português", dir: "ltr", flag: "🇧🇷" },
+  {
+    code: "pt",
+    name: "Portuguese",
+    nativeName: "Português",
+    dir: "ltr",
+    flag: "🇧🇷",
+  },
 ];
 
 /** Translation dictionary type */
@@ -121,11 +145,32 @@ const TRANSLATIONS: Record<SupportedLocale, Translations> = {
     },
     roles: {
       heading: "Built for Every Role",
-      subheading: "StadiumOS AI adapts to your role. Choose your experience to get started.",
-      fan: { label: "Fan", description: "Your personalized matchday hub — ticket, navigation, queues & AI assistant.", cta: "Open Fan Hub" },
-      organizer: { label: "Organizer", description: "Mission-control operations dashboard — crowd, incidents, transport & KPIs.", cta: "Open Command" },
-      copilot: { label: "AI Copilot", description: "Full-page stadium AI for navigation queries, incident triage & real-time decisions.", cta: "Open Copilot" },
-      map: { label: "Smart Map", description: "Interactive stadium navigation with wheelchair routes, heatmap & emergency exits.", cta: "Open Map" },
+      subheading:
+        "StadiumOS AI adapts to your role. Choose your experience to get started.",
+      fan: {
+        label: "Fan",
+        description:
+          "Your personalized matchday hub — ticket, navigation, queues & AI assistant.",
+        cta: "Open Fan Hub",
+      },
+      organizer: {
+        label: "Organizer",
+        description:
+          "Mission-control operations dashboard — crowd, incidents, transport & KPIs.",
+        cta: "Open Command",
+      },
+      copilot: {
+        label: "AI Copilot",
+        description:
+          "Full-page stadium AI for navigation queries, incident triage & real-time decisions.",
+        cta: "Open Copilot",
+      },
+      map: {
+        label: "Smart Map",
+        description:
+          "Interactive stadium navigation with wheelchair routes, heatmap & emergency exits.",
+        cta: "Open Map",
+      },
     },
     dashboard: {
       title: "Fan Hub",
@@ -141,7 +186,8 @@ const TRANSLATIONS: Record<SupportedLocale, Translations> = {
       title: "Copilot",
       placeholder: "Ask Copilot anything about the stadium…",
       thinking: "Analyzing stadium data…",
-      disclaimer: "Copilot can make mistakes. Always verify critical operational decisions.",
+      disclaimer:
+        "Copilot can make mistakes. Always verify critical operational decisions.",
     },
     map: {
       title: "Smart Nav",
@@ -166,13 +212,17 @@ const TRANSLATIONS: Record<SupportedLocale, Translations> = {
     },
     sections: {
       stadiumTitle: "A living, breathing venue.",
-      stadiumDesc: "See the entire stadium at a glance. Detect crowd density shifts, temperature anomalies, and security events in real-time.",
+      stadiumDesc:
+        "See the entire stadium at a glance. Detect crowd density shifts, temperature anomalies, and security events in real-time.",
       copilotTitle: "Your operations co-pilot, powered by Generative AI.",
-      copilotDesc: "StadiumOS doesn't just show data; it understands context. Ask complex questions about crowd density, resource allocation, or emergency protocols, and get actionable intelligence instantly.",
+      copilotDesc:
+        "StadiumOS doesn't just show data; it understands context. Ask complex questions about crowd density, resource allocation, or emergency protocols, and get actionable intelligence instantly.",
       crowdTitle: "Predict the bottleneck, before the jam.",
-      crowdDesc: "Leveraging historical data and real-time computer vision, StadiumOS predicts crowd movement patterns with 94% accuracy, automatically adjusting digital signage to redirect flow.",
+      crowdDesc:
+        "Leveraging historical data and real-time computer vision, StadiumOS predicts crowd movement patterns with 94% accuracy, automatically adjusting digital signage to redirect flow.",
       accessTitle: "A World Cup for the World.",
-      accessDesc: "Breaking down barriers with AI-powered accessibility tools built natively into the platform.",
+      accessDesc:
+        "Breaking down barriers with AI-powered accessibility tools built natively into the platform.",
     },
   },
 
@@ -195,11 +245,32 @@ const TRANSLATIONS: Record<SupportedLocale, Translations> = {
     },
     roles: {
       heading: "Construido para Cada Rol",
-      subheading: "StadiumOS AI se adapta a tu rol. Elige tu experiencia para comenzar.",
-      fan: { label: "Aficionado", description: "Tu centro personalizado del día de partido — entrada, navegación, colas y asistente IA.", cta: "Abrir Fan Hub" },
-      organizer: { label: "Organizador", description: "Panel de control operativo — multitudes, incidentes, transporte y KPIs.", cta: "Abrir Mando" },
-      copilot: { label: "Copiloto IA", description: "IA de estadio de pantalla completa para consultas de navegación y decisiones en tiempo real.", cta: "Abrir Copiloto" },
-      map: { label: "Mapa Inteligente", description: "Navegación interactiva con rutas accesibles, mapa de calor y salidas de emergencia.", cta: "Abrir Mapa" },
+      subheading:
+        "StadiumOS AI se adapta a tu rol. Elige tu experiencia para comenzar.",
+      fan: {
+        label: "Aficionado",
+        description:
+          "Tu centro personalizado del día de partido — entrada, navegación, colas y asistente IA.",
+        cta: "Abrir Fan Hub",
+      },
+      organizer: {
+        label: "Organizador",
+        description:
+          "Panel de control operativo — multitudes, incidentes, transporte y KPIs.",
+        cta: "Abrir Mando",
+      },
+      copilot: {
+        label: "Copiloto IA",
+        description:
+          "IA de estadio de pantalla completa para consultas de navegación y decisiones en tiempo real.",
+        cta: "Abrir Copiloto",
+      },
+      map: {
+        label: "Mapa Inteligente",
+        description:
+          "Navegación interactiva con rutas accesibles, mapa de calor y salidas de emergencia.",
+        cta: "Abrir Mapa",
+      },
     },
     dashboard: {
       title: "Fan Hub",
@@ -215,7 +286,8 @@ const TRANSLATIONS: Record<SupportedLocale, Translations> = {
       title: "Copiloto",
       placeholder: "Pregunta al Copiloto sobre el estadio…",
       thinking: "Analizando datos del estadio…",
-      disclaimer: "El Copiloto puede cometer errores. Siempre verifica decisiones operativas críticas.",
+      disclaimer:
+        "El Copiloto puede cometer errores. Siempre verifica decisiones operativas críticas.",
     },
     map: {
       title: "Nav Inteligente",
@@ -240,13 +312,17 @@ const TRANSLATIONS: Record<SupportedLocale, Translations> = {
     },
     sections: {
       stadiumTitle: "Un lugar vivo y vibrante.",
-      stadiumDesc: "Vea todo el estadio de un vistazo. Detecte cambios de densidad de multitud, anomalías de temperatura y eventos de seguridad en tiempo real.",
+      stadiumDesc:
+        "Vea todo el estadio de un vistazo. Detecte cambios de densidad de multitud, anomalías de temperatura y eventos de seguridad en tiempo real.",
       copilotTitle: "Su copiloto de operaciones, impulsado por IA Generativa.",
-      copilotDesc: "StadiumOS no solo muestra datos; entiende el contexto. Realice preguntas complejas sobre densidad de multitudes o protocolos de emergencia y obtenga información útil al instante.",
+      copilotDesc:
+        "StadiumOS no solo muestra datos; entiende el contexto. Realice preguntas complejas sobre densidad de multitudes o protocolos de emergencia y obtenga información útil al instante.",
       crowdTitle: "Prediga el embotellamiento, antes de que ocurra.",
-      crowdDesc: "Aprovechando datos históricos y visión por computadora en tiempo real, StadiumOS predice patrones de flujo con un 94% de precisión y ajusta señales digitales automáticamente.",
+      crowdDesc:
+        "Aprovechando datos históricos y visión por computadora en tiempo real, StadiumOS predice patrones de flujo con un 94% de precisión y ajusta señales digitales automáticamente.",
       accessTitle: "Una Copa del Mundo para el Mundo.",
-      accessDesc: "Rompiendo barreras con herramientas de accesibilidad nativas impulsadas por inteligencia artificial.",
+      accessDesc:
+        "Rompiendo barreras con herramientas de accesibilidad nativas impulsadas por inteligencia artificial.",
     },
   },
 
@@ -269,11 +345,32 @@ const TRANSLATIONS: Record<SupportedLocale, Translations> = {
     },
     roles: {
       heading: "Conçu pour Chaque Rôle",
-      subheading: "StadiumOS AI s'adapte à votre rôle. Choisissez votre expérience pour commencer.",
-      fan: { label: "Fan", description: "Votre hub personnalisé du jour de match — billet, navigation, files et assistant IA.", cta: "Ouvrir Fan Hub" },
-      organizer: { label: "Organisateur", description: "Tableau de bord opérationnel — foules, incidents, transport et KPIs.", cta: "Ouvrir Commandement" },
-      copilot: { label: "Copilote IA", description: "IA de stade plein écran pour les requêtes de navigation et les décisions en temps réel.", cta: "Ouvrir Copilote" },
-      map: { label: "Carte Intelligente", description: "Navigation interactive avec itinéraires accessibles, carte thermique et sorties de secours.", cta: "Ouvrir Carte" },
+      subheading:
+        "StadiumOS AI s'adapte à votre rôle. Choisissez votre expérience pour commencer.",
+      fan: {
+        label: "Fan",
+        description:
+          "Votre hub personnalisé du jour de match — billet, navigation, files et assistant IA.",
+        cta: "Ouvrir Fan Hub",
+      },
+      organizer: {
+        label: "Organisateur",
+        description:
+          "Tableau de bord opérationnel — foules, incidents, transport et KPIs.",
+        cta: "Ouvrir Commandement",
+      },
+      copilot: {
+        label: "Copilote IA",
+        description:
+          "IA de stade plein écran pour les requêtes de navigation et les décisions en temps réel.",
+        cta: "Ouvrir Copilote",
+      },
+      map: {
+        label: "Carte Intelligente",
+        description:
+          "Navigation interactive avec itinéraires accessibles, carte thermique et sorties de secours.",
+        cta: "Ouvrir Carte",
+      },
     },
     dashboard: {
       title: "Fan Hub",
@@ -289,7 +386,8 @@ const TRANSLATIONS: Record<SupportedLocale, Translations> = {
       title: "Copilote",
       placeholder: "Demandez au Copilote tout sur le stade…",
       thinking: "Analyse des données du stade…",
-      disclaimer: "Le Copilote peut faire des erreurs. Vérifiez toujours les décisions opérationnelles critiques.",
+      disclaimer:
+        "Le Copilote peut faire des erreurs. Vérifiez toujours les décisions opérationnelles critiques.",
     },
     map: {
       title: "Nav Intelligente",
@@ -314,13 +412,19 @@ const TRANSLATIONS: Record<SupportedLocale, Translations> = {
     },
     sections: {
       stadiumTitle: "Un stade vivant et connecté.",
-      stadiumDesc: "Visualisez tout le stade en un coup d'œil. Détectez les flux de foule, anomalies thermiques et alertes de sécurité en temps réel.",
-      copilotTitle: "Votre copilote opérationnel, propulsé par l'IA Générative.",
-      copilotDesc: "StadiumOS ne se contente pas d'afficher des données, il en comprend le contexte. Posez des questions complexes sur les foules ou la sécurité et obtenez des réponses instantanées.",
-      crowdTitle: "Anticipez les goulets d'étranglement avant qu'ils ne se forment.",
-      crowdDesc: "Grâce aux données historiques et à la vision par ordinateur, StadiumOS prédit les mouvements de foule avec 94% de précision.",
+      stadiumDesc:
+        "Visualisez tout le stade en un coup d'œil. Détectez les flux de foule, anomalies thermiques et alertes de sécurité en temps réel.",
+      copilotTitle:
+        "Votre copilote opérationnel, propulsé par l'IA Générative.",
+      copilotDesc:
+        "StadiumOS ne se contente pas d'afficher des données, il en comprend le contexte. Posez des questions complexes sur les foules ou la sécurité et obtenez des réponses instantanées.",
+      crowdTitle:
+        "Anticipez les goulets d'étranglement avant qu'ils ne se forment.",
+      crowdDesc:
+        "Grâce aux données historiques et à la vision par ordinateur, StadiumOS prédit les mouvements de foule avec 94% de précision.",
       accessTitle: "Une Coupe du Monde pour le Monde entier.",
-      accessDesc: "Brisez les barrières grâce à des outils d'accessibilité natifs dotés d'intelligence artificielle.",
+      accessDesc:
+        "Brisez les barrières grâce à des outils d'accessibilité natifs dotés d'intelligence artificielle.",
     },
   },
 
@@ -344,10 +448,30 @@ const TRANSLATIONS: Record<SupportedLocale, Translations> = {
     roles: {
       heading: "مبني لكل دور",
       subheading: "يتكيف StadiumOS AI مع دورك. اختر تجربتك للبدء.",
-      fan: { label: "مشجع", description: "مركزك الشخصي ليوم المباراة — التذكرة، الملاحة، الطوابير والمساعد الذكي.", cta: "فتح مركز المشجعين" },
-      organizer: { label: "منظم", description: "لوحة تحكم العمليات — الحشود، الحوادث، النقل ومؤشرات الأداء.", cta: "فتح مركز القيادة" },
-      copilot: { label: "المساعد الذكي", description: "ذكاء اصطناعي للملعب لاستعلامات الملاحة والقرارات الفورية.", cta: "فتح المساعد" },
-      map: { label: "الخريطة الذكية", description: "ملاحة تفاعلية مع مسارات للكراسي المتحركة وخريطة الحرارة ومخارج الطوارئ.", cta: "فتح الخريطة" },
+      fan: {
+        label: "مشجع",
+        description:
+          "مركزك الشخصي ليوم المباراة — التذكرة، الملاحة، الطوابير والمساعد الذكي.",
+        cta: "فتح مركز المشجعين",
+      },
+      organizer: {
+        label: "منظم",
+        description:
+          "لوحة تحكم العمليات — الحشود، الحوادث، النقل ومؤشرات الأداء.",
+        cta: "فتح مركز القيادة",
+      },
+      copilot: {
+        label: "المساعد الذكي",
+        description:
+          "ذكاء اصطناعي للملعب لاستعلامات الملاحة والقرارات الفورية.",
+        cta: "فتح المساعد",
+      },
+      map: {
+        label: "الخريطة الذكية",
+        description:
+          "ملاحة تفاعلية مع مسارات للكراسي المتحركة وخريطة الحرارة ومخارج الطوارئ.",
+        cta: "فتح الخريطة",
+      },
     },
     dashboard: {
       title: "مركز المشجعين",
@@ -363,7 +487,8 @@ const TRANSLATIONS: Record<SupportedLocale, Translations> = {
       title: "المساعد الذكي",
       placeholder: "اسأل المساعد عن أي شيء في الملعب…",
       thinking: "جارٍ تحليل بيانات الملعب…",
-      disclaimer: "قد يرتكب المساعد أخطاء. تحقق دائمًا من القرارات التشغيلية الحاسمة.",
+      disclaimer:
+        "قد يرتكب المساعد أخطاء. تحقق دائمًا من القرارات التشغيلية الحاسمة.",
     },
     map: {
       title: "الملاحة الذكية",
@@ -388,13 +513,18 @@ const TRANSLATIONS: Record<SupportedLocale, Translations> = {
     },
     sections: {
       stadiumTitle: "مكان حي ونابض بالحياة.",
-      stadiumDesc: "شاهد الملعب بأكمله بلمحة سريعة. اكتشف التغيرات في كثافة الحشود، والتقلبات الحرارية، والأحداث الأمنية في الوقت الفعلي.",
-      copilotTitle: "مساعد العمليات الخاص بك، مدعوم بالذكاء الاصطناعي التوليدي.",
-      copilotDesc: "لا يعرض StadiumOS البيانات فحسب؛ بل يفهم السياق. اطرح أسئلة معقدة حول كثافة الحشود أو بروتوكولات الطوارئ واحصل على إجابات فورية.",
+      stadiumDesc:
+        "شاهد الملعب بأكمله بلمحة سريعة. اكتشف التغيرات في كثافة الحشود، والتقلبات الحرارية، والأحداث الأمنية في الوقت الفعلي.",
+      copilotTitle:
+        "مساعد العمليات الخاص بك، مدعوم بالذكاء الاصطناعي التوليدي.",
+      copilotDesc:
+        "لا يعرض StadiumOS البيانات فحسب؛ بل يفهم السياق. اطرح أسئلة معقدة حول كثافة الحشود أو بروتوكولات الطوارئ واحصل على إجابات فورية.",
       crowdTitle: "توقع الاختناقات قبل حدوثها.",
-      crowdDesc: "باستخدام البيانات التاريخية والرؤية الحاسوبية، يتوقع StadiumOS أنماط حركة الحشود بدقة 94٪، ويعدل اللوحات الرقمية تلقائيًا.",
+      crowdDesc:
+        "باستخدام البيانات التاريخية والرؤية الحاسوبية، يتوقع StadiumOS أنماط حركة الحشود بدقة 94٪، ويعدل اللوحات الرقمية تلقائيًا.",
       accessTitle: "كأس عالم للعالم بأكمله.",
-      accessDesc: "كسر الحواجز باستخدام أدوات إمكانية الوصول المدعومة بالذكاء الاصطناعي والمدمجة في المنصة.",
+      accessDesc:
+        "كسر الحواجز باستخدام أدوات إمكانية الوصول المدعومة بالذكاء الاصطناعي والمدمجة في المنصة.",
     },
   },
 
@@ -417,11 +547,32 @@ const TRANSLATIONS: Record<SupportedLocale, Translations> = {
     },
     roles: {
       heading: "Construído para Cada Papel",
-      subheading: "StadiumOS AI se adapta ao seu papel. Escolha sua experiência para começar.",
-      fan: { label: "Torcedor", description: "Seu hub personalizado do dia de jogo — ingresso, navegação, filas e assistente IA.", cta: "Abrir Fan Hub" },
-      organizer: { label: "Organizador", description: "Painel de controle operacional — multidões, incidentes, transporte e KPIs.", cta: "Abrir Comando" },
-      copilot: { label: "Copiloto IA", description: "IA de estádio em tela cheia para consultas de navegação e decisões em tempo real.", cta: "Abrir Copiloto" },
-      map: { label: "Mapa Inteligente", description: "Navegação interativa com rotas acessíveis, mapa de calor e saídas de emergência.", cta: "Abrir Mapa" },
+      subheading:
+        "StadiumOS AI se adapta ao seu papel. Escolha sua experiência para começar.",
+      fan: {
+        label: "Torcedor",
+        description:
+          "Seu hub personalizado do dia de jogo — ingresso, navegação, filas e assistente IA.",
+        cta: "Abrir Fan Hub",
+      },
+      organizer: {
+        label: "Organizador",
+        description:
+          "Painel de controle operacional — multidões, incidentes, transporte e KPIs.",
+        cta: "Abrir Comando",
+      },
+      copilot: {
+        label: "Copiloto IA",
+        description:
+          "IA de estádio em tela cheia para consultas de navegação e decisões em tempo real.",
+        cta: "Abrir Copiloto",
+      },
+      map: {
+        label: "Mapa Inteligente",
+        description:
+          "Navegação interativa com rotas acessíveis, mapa de calor e saídas de emergência.",
+        cta: "Abrir Mapa",
+      },
     },
     dashboard: {
       title: "Fan Hub",
@@ -437,7 +588,8 @@ const TRANSLATIONS: Record<SupportedLocale, Translations> = {
       title: "Copiloto",
       placeholder: "Pergunte ao Copiloto qualquer coisa sobre o estádio…",
       thinking: "Analisando dados do estádio…",
-      disclaimer: "O Copiloto pode cometer erros. Sempre verifique decisões operacionais críticas.",
+      disclaimer:
+        "O Copiloto pode cometer erros. Sempre verifique decisões operacionais críticas.",
     },
     map: {
       title: "Nav Inteligente",
@@ -462,13 +614,17 @@ const TRANSLATIONS: Record<SupportedLocale, Translations> = {
     },
     sections: {
       stadiumTitle: "Um local vivo e pulsante.",
-      stadiumDesc: "Veja todo o estádio de relance. Detecte fluxos de multidão, anomalias de temperatura e alertas de segurança em tempo real.",
+      stadiumDesc:
+        "Veja todo o estádio de relance. Detecte fluxos de multidão, anomalias de temperatura e alertas de segurança em tempo real.",
       copilotTitle: "Seu copiloto de operações, alimentado por IA Generativa.",
-      copilotDesc: "O StadiumOS não apenas exibe dados; ele entende o contexto. Faça perguntas complexas sobre densidade ou segurança e obteneu respostas imediatas.",
+      copilotDesc:
+        "O StadiumOS não apenas exibe dados; ele entende o contexto. Faça perguntas complexas sobre densidade ou segurança e obteneu respostas imediatas.",
       crowdTitle: "Preveja o congestionamento antes que ele aconteça.",
-      crowdDesc: "Aproveitando dados históricos e visão computacional, o StadiumOS prevê movimentos com 94% de eficiência, ajustando painéis digitais automaticamente.",
+      crowdDesc:
+        "Aproveitando dados históricos e visão computacional, o StadiumOS prevê movimentos com 94% de eficiência, ajustando painéis digitais automaticamente.",
       accessTitle: "Uma Copa do Mundo para o Mundo inteiro.",
-      accessDesc: "Quebrando barreiras com ferramentas nativas de acessibilidade alimentadas por inteligência artificial.",
+      accessDesc:
+        "Quebrando barreiras com ferramentas nativas de acessibilidade alimentadas por inteligência artificial.",
     },
   },
 };
@@ -485,5 +641,7 @@ export function getTranslations(locale: SupportedLocale): Translations {
  * Returns locale metadata for a given locale code.
  */
 export function getLocaleInfo(locale: SupportedLocale): Locale {
-  return SUPPORTED_LOCALES.find((l) => l.code === locale) ?? SUPPORTED_LOCALES[0];
+  return (
+    SUPPORTED_LOCALES.find((l) => l.code === locale) ?? SUPPORTED_LOCALES[0]
+  );
 }

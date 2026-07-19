@@ -8,13 +8,13 @@ StadiumOS AI is a production-ready, full-stack web application that brings the p
 
 ## 🚀 Live Features
 
-| Feature | Route | Description |
-|---|---|---|
-| **Landing Page** | `/` | Premium marketing page with hero, live match card, AI preview, bento grid, crowd intelligence, and accessibility highlights |
-| **Fan Hub Dashboard** | `/dashboard` | Personalized matchday companion — ticket, seat info, queues, transit, weather, AI suggestions |
-| **Command Center** | `/ops` | NASA Mission Control–style operations dashboard for organizers — heatmap, incident feed, security alerts, KPIs, live charts |
-| **Copilot AI** | `/copilot` | Full-page ChatGPT-style AI assistant with conversation history, location context, voice/camera input, thinking animations |
-| **Smart Navigation** | `/map` | Apple Maps–inspired interactive 3D stadium map with dynamic routing, crowd heatmap, wheelchair routes, emergency exits |
+| Feature               | Route        | Description                                                                                                                 |
+| --------------------- | ------------ | --------------------------------------------------------------------------------------------------------------------------- |
+| **Landing Page**      | `/`          | Premium marketing page with hero, live match card, AI preview, bento grid, crowd intelligence, and accessibility highlights |
+| **Fan Hub Dashboard** | `/dashboard` | Personalized matchday companion — ticket, seat info, queues, transit, weather, AI suggestions                               |
+| **Command Center**    | `/ops`       | NASA Mission Control–style operations dashboard for organizers — heatmap, incident feed, security alerts, KPIs, live charts |
+| **Copilot AI**        | `/copilot`   | Full-page ChatGPT-style AI assistant with conversation history, location context, voice/camera input, thinking animations   |
+| **Smart Navigation**  | `/map`       | Apple Maps–inspired interactive 3D stadium map with dynamic routing, crowd heatmap, wheelchair routes, emergency exits      |
 
 ---
 
@@ -57,15 +57,15 @@ stadiumos-ai/
 
 Built with a proprietary **Premium Design System** featuring:
 
-| Token | Value |
-|---|---|
-| Background | `#050816` |
-| Primary Blue | `#2563EB` |
-| Accent Cyan | `#00E5FF` |
-| Success | `#22C55E` |
-| Danger | `#EF4444` |
-| Warning | `#F59E0B` |
-| Border Radius | `24px` |
+| Token         | Value     |
+| ------------- | --------- |
+| Background    | `#050816` |
+| Primary Blue  | `#2563EB` |
+| Accent Cyan   | `#00E5FF` |
+| Success       | `#22C55E` |
+| Danger        | `#EF4444` |
+| Warning       | `#F59E0B` |
+| Border Radius | `24px`    |
 
 **Typography**: Sora (headings) · Inter (body) · JetBrains Mono (data/code)
 
@@ -75,21 +75,22 @@ Built with a proprietary **Premium Design System** featuring:
 
 ## 🛠️ Tech Stack
 
-| Layer | Technology |
-|---|---|
-| Framework | Next.js 16 (App Router, React 19) |
-| Styling | Tailwind CSS v4 |
-| Animation | Framer Motion |
-| Charts | Recharts |
-| Icons | Lucide React |
-| Type Safety | TypeScript |
-| Font Loading | Next.js `next/font/google` |
+| Layer        | Technology                        |
+| ------------ | --------------------------------- |
+| Framework    | Next.js 16 (App Router, React 19) |
+| Styling      | Tailwind CSS v4                   |
+| Animation    | Framer Motion                     |
+| Charts       | Recharts                          |
+| Icons        | Lucide React                      |
+| Type Safety  | TypeScript                        |
+| Font Loading | Next.js `next/font/google`        |
 
 ---
 
 ## ⚡ Getting Started
 
 ### Prerequisites
+
 - Node.js 18+
 - npm / pnpm
 
@@ -133,11 +134,13 @@ npm run start
 ## 🌍 FIFA World Cup 2026 Context
 
 StadiumOS AI is designed for the **FIFA World Cup 2026**, co-hosted across **16 cities** in **USA, Canada, and Mexico**, featuring:
+
 - **104 matches** across 16 venues
 - Up to **94,000 fans** per match
 - Massive multilingual, multi-timezone operational complexity
 
 Our platform addresses all key challenge pillars:
+
 - ✅ **Navigation** — Smart Map with accessibility routing
 - ✅ **Crowd Management** — Real-time heatmaps and AI predictions
 - ✅ **Accessibility** — Wheelchair routes, visual contrast, screen-reader ready

@@ -1,27 +1,32 @@
-"use client"
-import * as React from "react"
-import Link from "next/link"
-import { CopilotSidebar } from "@/features/copilot/components/CopilotSidebar"
-import { ChatArea } from "@/features/copilot/components/ChatArea"
-import { InputBar } from "@/features/copilot/components/InputBar"
-import { SuggestedPrompts } from "@/features/copilot/components/SuggestedPrompts"
-import { getAIResponse } from "@/lib/ai-router"
-import { Activity, Menu, LayoutDashboard } from "lucide-react"
+"use client";
+import * as React from "react";
+import Link from "next/link";
+import { CopilotSidebar } from "@/features/copilot/components/CopilotSidebar";
+import { ChatArea } from "@/features/copilot/components/ChatArea";
+import { InputBar } from "@/features/copilot/components/InputBar";
+import { SuggestedPrompts } from "@/features/copilot/components/SuggestedPrompts";
+import { getAIResponse } from "@/lib/ai-router";
+import { Activity, Menu, LayoutDashboard } from "lucide-react";
 
 export default function CopilotPage() {
-  const [messages, setMessages] = React.useState<{ id: string; text: string; isAi: boolean }[]>([])
-  const [isThinking, setIsThinking] = React.useState(false)
-  const [sidebarOpen, setSidebarOpen] = React.useState(false)
+  const [messages, setMessages] = React.useState<
+    { id: string; text: string; isAi: boolean }[]
+  >([]);
+  const [isThinking, setIsThinking] = React.useState(false);
+  const [sidebarOpen, setSidebarOpen] = React.useState(false);
 
   const handleInput = React.useCallback((text: string) => {
-    setMessages((prev) => [...prev, { id: Date.now().toString(), text, isAi: false }])
-    setIsThinking(true)
+    setMessages((prev) => [
+      ...prev,
+      { id: Date.now().toString(), text, isAi: false },
+    ]);
+    setIsThinking(true);
 
     // Use smart keyword router for contextual responses
-    const thinkTime = 1200 + Math.random() * 1000
+    const thinkTime = 1200 + Math.random() * 1000;
     setTimeout(() => {
-      setIsThinking(false)
-      const { text: aiText } = getAIResponse(text)
+      setIsThinking(false);
+      const { text: aiText } = getAIResponse(text);
       setMessages((prev) => [
         ...prev,
         {
@@ -29,24 +34,28 @@ export default function CopilotPage() {
           text: aiText,
           isAi: true,
         },
-      ])
-    }, thinkTime)
-  }, [])
+      ]);
+    }, thinkTime);
+  }, []);
 
   // Parse incoming query parameters safely on the client
   React.useEffect(() => {
     if (typeof window !== "undefined") {
-      const params = new URLSearchParams(window.location.search)
-      const query = params.get("q")
+      const params = new URLSearchParams(window.location.search);
+      const query = params.get("q");
       if (query) {
         setTimeout(() => {
-          handleInput(decodeURIComponent(query))
-        }, 0)
+          handleInput(decodeURIComponent(query));
+        }, 0);
         // Clean query param from browser bar to prevent duplicate runs on reload
-        window.history.replaceState({}, document.title, window.location.pathname)
+        window.history.replaceState(
+          {},
+          document.title,
+          window.location.pathname,
+        );
       }
     }
-  }, [handleInput])
+  }, [handleInput]);
 
   return (
     <div className="h-screen w-full flex bg-[#02040a] overflow-hidden">
@@ -63,7 +72,10 @@ export default function CopilotPage() {
           <Activity className="w-5 h-5 text-[var(--accent-cyan)]" />
           <span className="font-heading font-bold text-white">Copilot</span>
         </div>
-        <button onClick={() => setSidebarOpen(!sidebarOpen)} className="text-white">
+        <button
+          onClick={() => setSidebarOpen(!sidebarOpen)}
+          className="text-white"
+        >
           <Menu className="w-6 h-6" />
         </button>
       </div>
@@ -97,5 +109,5 @@ export default function CopilotPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }

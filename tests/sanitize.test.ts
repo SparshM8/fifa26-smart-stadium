@@ -1,5 +1,10 @@
 import { describe, it, expect } from "vitest";
-import { sanitizeInput, stripHtml, isNonEmpty, truncate } from "@/lib/utils/sanitize";
+import {
+  sanitizeInput,
+  stripHtml,
+  isNonEmpty,
+  truncate,
+} from "@/lib/utils/sanitize";
 
 describe("sanitizeInput", () => {
   it("blocks HTML injection by encoding all dangerous characters", () => {

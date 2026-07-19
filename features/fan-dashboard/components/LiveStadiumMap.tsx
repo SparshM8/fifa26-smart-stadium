@@ -1,9 +1,9 @@
-"use client"
-import * as React from "react"
-import Link from "next/link"
-import { Card } from "@/components/design-system/Card"
-import { motion } from "framer-motion"
-import { MapPin, Navigation } from "lucide-react"
+"use client";
+import * as React from "react";
+import Link from "next/link";
+import { Card } from "@/components/design-system/Card";
+import { motion } from "framer-motion";
+import { MapPin, Navigation } from "lucide-react";
 
 export function LiveStadiumMap() {
   return (
@@ -11,10 +11,10 @@ export function LiveStadiumMap() {
       {/* Background Map Simulation */}
       <div className="absolute inset-0 bg-[#0a0f24] opacity-80" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent pointer-events-none" />
-      
+
       {/* Stadium Graphic */}
       <div className="absolute inset-0 flex items-center justify-center perspective-1000">
-        <motion.div 
+        <motion.div
           className="relative w-[85%] h-[85%] rounded-[40%] border border-white/10 flex items-center justify-center transform-style-3d"
           animate={{ rotateZ: 360 }}
           transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
@@ -61,17 +61,25 @@ export function LiveStadiumMap() {
         />
         {/* Animated moving dot along the route */}
         <circle r="1.5" fill="var(--accent-cyan)" opacity="0.9">
-          <animateMotion dur="2s" repeatCount="indefinite" path="M 50 50 Q 60 40 66 33" />
+          <animateMotion
+            dur="2s"
+            repeatCount="indefinite"
+            path="M 50 50 Q 60 40 66 33"
+          />
         </circle>
       </svg>
 
       {/* UI Overlay linking to `/map` */}
       <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end z-10">
         <div className="bg-black/75 backdrop-blur-md rounded-2xl p-3.5 border border-white/10">
-          <div className="text-[10px] text-zinc-400 font-bold uppercase tracking-wider font-mono">Suggested Route</div>
-          <div className="text-xs font-bold text-white mt-0.5">Block 110 Restrooms</div>
+          <div className="text-[10px] text-zinc-400 font-bold uppercase tracking-wider font-mono">
+            Suggested Route
+          </div>
+          <div className="text-xs font-bold text-white mt-0.5">
+            Block 110 Restrooms
+          </div>
         </div>
-        <Link 
+        <Link
           href="/map?destination=Restrooms"
           className="h-12 w-12 rounded-full bg-[var(--primary)] text-white flex items-center justify-center shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:scale-105 active:scale-95 transition-all focus-visible:ring-2 focus-visible:ring-white"
           aria-label="Open navigation for Block 110 Restrooms"
@@ -80,5 +88,5 @@ export function LiveStadiumMap() {
         </Link>
       </div>
     </Card>
-  )
+  );
 }

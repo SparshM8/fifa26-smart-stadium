@@ -1,14 +1,14 @@
-import * as React from "react"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { cn } from "@/lib/utils";
 
 export function SectionTitle({
   title,
   subtitle,
   className,
 }: {
-  title: string
-  subtitle?: string
-  className?: string
+  title: string;
+  subtitle?: string;
+  className?: string;
 }) {
   return (
     <div className={cn("mb-8", className)}>
@@ -21,5 +21,5 @@ export function SectionTitle({
         </p>
       )}
     </div>
-  )
+  );
 }

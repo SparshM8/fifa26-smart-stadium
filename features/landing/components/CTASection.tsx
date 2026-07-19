@@ -21,7 +21,8 @@ export function CTASection() {
             Ready for kickoff.
           </h2>
           <p className="text-xl text-zinc-300 max-w-2xl mx-auto mb-10">
-            Join the elite venues already using StadiumOS to power the next generation of live sports entertainment.
+            Join the elite venues already using StadiumOS to power the next
+            generation of live sports entertainment.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

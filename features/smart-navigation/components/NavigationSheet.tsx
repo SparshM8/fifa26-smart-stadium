@@ -1,21 +1,29 @@
-"use client"
-import * as React from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { Search, Utensils, Droplets, HeartPulse, Car, ArrowUpRight, Navigation } from "lucide-react"
-import { cn } from "@/lib/utils"
+"use client";
+import * as React from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  Search,
+  Utensils,
+  Droplets,
+  HeartPulse,
+  Car,
+  ArrowUpRight,
+  Navigation,
+} from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export interface NavigationSheetProps {
-  onRoute: (destination: string) => void
-  activeRoute: string | null
+  onRoute: (destination: string) => void;
+  activeRoute: string | null;
 }
 
 const ROUTE_DETAILS: Record<
   string,
   {
-    destinationName: string
-    totalDistance: string
-    estTime: string
-    instructions: { text: string; subtext: string }[]
+    destinationName: string;
+    totalDistance: string;
+    estTime: string;
+    instructions: { text: string; subtext: string }[];
   }
 > = {
   Food: {
@@ -24,8 +32,14 @@ const ROUTE_DETAILS: Record<
     estTime: "2 min walk",
     instructions: [
       { text: "Walk straight 40m", subtext: "Head East from Gate C area" },
-      { text: "Turn left at Lower Tier concourse", subtext: "Walk past the Section 5 seating entrance" },
-      { text: "Arrive at Concession Stand 7A", subtext: "Located directly opposite Block 109" },
+      {
+        text: "Turn left at Lower Tier concourse",
+        subtext: "Walk past the Section 5 seating entrance",
+      },
+      {
+        text: "Arrive at Concession Stand 7A",
+        subtext: "Located directly opposite Block 109",
+      },
     ],
   },
   Restrooms: {
@@ -33,9 +47,18 @@ const ROUTE_DETAILS: Record<
     totalDistance: "240m",
     estTime: "3 min walk",
     instructions: [
-      { text: "Head East for 40m towards Sector B", subtext: "Follow the blue pedestrian pathway" },
-      { text: "Turn left and walk 120m", subtext: "Pass Concession Stands 5-8" },
-      { text: "Take Elevator 2 to Level 2", subtext: "Restrooms are 10m to your right" },
+      {
+        text: "Head East for 40m towards Sector B",
+        subtext: "Follow the blue pedestrian pathway",
+      },
+      {
+        text: "Turn left and walk 120m",
+        subtext: "Pass Concession Stands 5-8",
+      },
+      {
+        text: "Take Elevator 2 to Level 2",
+        subtext: "Restrooms are 10m to your right",
+      },
     ],
   },
   Medical: {
@@ -43,8 +66,14 @@ const ROUTE_DETAILS: Record<
     totalDistance: "80m",
     estTime: "1 min walk",
     instructions: [
-      { text: "Head West for 30m towards Gate D", subtext: "Follow emergency red signs" },
-      { text: "Proceed past Gate B Entrance", subtext: "Medical Point is located at Bay 4" },
+      {
+        text: "Head West for 30m towards Gate D",
+        subtext: "Follow emergency red signs",
+      },
+      {
+        text: "Proceed past Gate B Entrance",
+        subtext: "Medical Point is located at Bay 4",
+      },
     ],
   },
   Parking: {
@@ -52,9 +81,18 @@ const ROUTE_DETAILS: Record<
     totalDistance: "320m",
     estTime: "5 min walk",
     instructions: [
-      { text: "Head South towards Gate C Exit", subtext: "Follow parking signs" },
-      { text: "Pass through turnstile C-4", subtext: "Present exit barcode if required" },
-      { text: "Follow green pedestrian path to Lot C", subtext: "Accessible parking is near Row 2" },
+      {
+        text: "Head South towards Gate C Exit",
+        subtext: "Follow parking signs",
+      },
+      {
+        text: "Pass through turnstile C-4",
+        subtext: "Present exit barcode if required",
+      },
+      {
+        text: "Follow green pedestrian path to Lot C",
+        subtext: "Accessible parking is near Row 2",
+      },
     ],
   },
   "My Seat": {
@@ -63,31 +101,61 @@ const ROUTE_DETAILS: Record<
     estTime: "3 min walk",
     instructions: [
       { text: "Walk East for 40m", subtext: "Head toward Section 4 entrance" },
-      { text: "Go up Ramp 3 to Lower Tier Row F", subtext: "Follow indicators for Seats 30-50" },
-      { text: "Find Seat 42 on your left", subtext: "Block 112, Row F is 6 rows up from concourse" },
+      {
+        text: "Go up Ramp 3 to Lower Tier Row F",
+        subtext: "Follow indicators for Seats 30-50",
+      },
+      {
+        text: "Find Seat 42 on your left",
+        subtext: "Block 112, Row F is 6 rows up from concourse",
+      },
     ],
   },
-}
+};
 
-export function NavigationSheet({ onRoute, activeRoute }: NavigationSheetProps) {
-  const [isExpanded, setIsExpanded] = React.useState(true)
-  const [searchQuery, setSearchQuery] = React.useState("")
-  const [prevRoute, setPrevRoute] = React.useState<string | null>(null)
+export function NavigationSheet({
+  onRoute,
+  activeRoute,
+}: NavigationSheetProps) {
+  const [isExpanded, setIsExpanded] = React.useState(true);
+  const [searchQuery, setSearchQuery] = React.useState("");
+  const [prevRoute, setPrevRoute] = React.useState<string | null>(null);
 
   const categories = [
-    { id: "food", icon: Utensils, label: "Food", color: "bg-orange-500/10 text-orange-400 border-orange-500/20" },
-    { id: "restrooms", icon: Droplets, label: "Restrooms", color: "bg-blue-500/10 text-blue-400 border-blue-500/20" },
-    { id: "medical", icon: HeartPulse, label: "Medical", color: "bg-[var(--danger)]/10 text-[var(--danger)] border-[var(--danger)]/20" },
-    { id: "parking", icon: Car, label: "Parking", color: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20" },
-  ]
+    {
+      id: "food",
+      icon: Utensils,
+      label: "Food",
+      color: "bg-orange-500/10 text-orange-400 border-orange-500/20",
+    },
+    {
+      id: "restrooms",
+      icon: Droplets,
+      label: "Restrooms",
+      color: "bg-blue-500/10 text-blue-400 border-blue-500/20",
+    },
+    {
+      id: "medical",
+      icon: HeartPulse,
+      label: "Medical",
+      color:
+        "bg-[var(--danger)]/10 text-[var(--danger)] border-[var(--danger)]/20",
+    },
+    {
+      id: "parking",
+      icon: Car,
+      label: "Parking",
+      color: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+    },
+  ];
 
-  const activeDetails = activeRoute ? ROUTE_DETAILS[activeRoute] : null
+  const activeDetails = activeRoute ? ROUTE_DETAILS[activeRoute] : null;
 
   // Adjust state when activeRoute changes during render
   if (activeRoute !== prevRoute) {
-    setPrevRoute(activeRoute)
+    setPrevRoute(activeRoute);
     if (activeRoute) {
-      setIsExpanded(true)
+      setIsExpanded(true);
     }
   }
 
@@ -95,7 +163,7 @@ export function NavigationSheet({ onRoute, activeRoute }: NavigationSheetProps) 
     <motion.div
       className={cn(
         "absolute bottom-0 left-0 right-0 md:left-8 md:bottom-8 md:right-auto md:w-[420px]",
-        "bg-black/75 backdrop-blur-2xl border-t md:border border-white/10 rounded-t-[32px] md:rounded-[32px] shadow-[0_24px_50px_rgba(0,0,0,0.8)] flex flex-col z-50 overflow-hidden"
+        "bg-black/75 backdrop-blur-2xl border-t md:border border-white/10 rounded-t-[32px] md:rounded-[32px] shadow-[0_24px_50px_rgba(0,0,0,0.8)] flex flex-col z-50 overflow-hidden",
       )}
       animate={{ height: isExpanded ? (activeRoute ? 460 : 400) : 80 }}
       transition={{ type: "spring", bounce: 0.15, duration: 0.55 }}
@@ -146,8 +214,12 @@ export function NavigationSheet({ onRoute, activeRoute }: NavigationSheetProps) 
                         {idx + 1}
                       </div>
                       <div>
-                        <div className="text-sm font-bold text-white leading-snug">{step.text}</div>
-                        <div className="text-xs text-zinc-400 mt-0.5 leading-relaxed">{step.subtext}</div>
+                        <div className="text-sm font-bold text-white leading-snug">
+                          {step.text}
+                        </div>
+                        <div className="text-xs text-zinc-400 mt-0.5 leading-relaxed">
+                          {step.subtext}
+                        </div>
                       </div>
                     </div>
                   ))}
@@ -193,7 +265,7 @@ export function NavigationSheet({ onRoute, activeRoute }: NavigationSheetProps) 
                     <div
                       className={cn(
                         "w-12 h-12 rounded-full flex items-center justify-center border transition-all group-hover:scale-105 group-focus-visible:ring-2 group-focus-visible:ring-[var(--accent-cyan)]",
-                        cat.color
+                        cat.color,
                       )}
                     >
                       <cat.icon className="w-5 h-5" />
@@ -219,8 +291,12 @@ export function NavigationSheet({ onRoute, activeRoute }: NavigationSheetProps) 
                       S
                     </div>
                     <div className="flex-1">
-                      <div className="text-sm font-bold text-white">My Seat</div>
-                      <div className="text-xs text-zinc-400">Block 112, Row F, Seat 42</div>
+                      <div className="text-sm font-bold text-white">
+                        My Seat
+                      </div>
+                      <div className="text-xs text-zinc-400">
+                        Block 112, Row F, Seat 42
+                      </div>
                     </div>
                     <ArrowUpRight className="w-4 h-4 text-zinc-500 shrink-0" />
                   </button>
@@ -233,8 +309,12 @@ export function NavigationSheet({ onRoute, activeRoute }: NavigationSheetProps) 
                       F
                     </div>
                     <div className="flex-1">
-                      <div className="text-sm font-bold text-white">Halftime Hotspots</div>
-                      <div className="text-xs text-zinc-400">Block 109 Concessions · Short wait</div>
+                      <div className="text-sm font-bold text-white">
+                        Halftime Hotspots
+                      </div>
+                      <div className="text-xs text-zinc-400">
+                        Block 109 Concessions · Short wait
+                      </div>
                     </div>
                     <ArrowUpRight className="w-4 h-4 text-zinc-500 shrink-0" />
                   </button>
@@ -245,5 +325,5 @@ export function NavigationSheet({ onRoute, activeRoute }: NavigationSheetProps) 
         </AnimatePresence>
       </div>
     </motion.div>
-  )
+  );
 }

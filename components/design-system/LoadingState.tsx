@@ -1,12 +1,8 @@
-"use client"
-import * as React from "react"
-import { motion } from "framer-motion"
+"use client";
+import * as React from "react";
+import { motion } from "framer-motion";
 
-export function LoadingState({
-  text = "Loading data...",
-}: {
-  text?: string
-}) {
+export function LoadingState({ text = "Loading data..." }: { text?: string }) {
   return (
     <div className="flex flex-col items-center justify-center p-12 min-h-[300px]">
       <div className="relative w-16 h-16 flex items-center justify-center mb-6">
@@ -23,5 +19,5 @@ export function LoadingState({
       </div>
       <p className="text-sm font-sans text-zinc-400 animate-pulse">{text}</p>
     </div>
-  )
+  );
 }

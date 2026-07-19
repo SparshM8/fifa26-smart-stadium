@@ -1,9 +1,9 @@
-"use client"
-import * as React from "react"
-import { motion } from "framer-motion"
+"use client";
+import * as React from "react";
+import { motion } from "framer-motion";
 
 export function TypingAnimation({ text }: { text: string }) {
-  const words = text.split(" ")
+  const words = text.split(" ");
 
   return (
     <div className="inline-block">
@@ -19,5 +19,5 @@ export function TypingAnimation({ text }: { text: string }) {
         </motion.span>
       ))}
     </div>
-  )
+  );
 }

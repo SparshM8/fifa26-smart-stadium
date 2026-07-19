@@ -1,5 +1,5 @@
-import Link from "next/link"
-import { Activity, ArrowLeft, Home } from "lucide-react"
+import Link from "next/link";
+import { Activity, ArrowLeft, Home } from "lucide-react";
 
 export default function NotFound() {
   return (
@@ -25,7 +25,8 @@ export default function NotFound() {
             Zone Not Found
           </h1>
           <p className="text-zinc-400 font-sans leading-relaxed">
-            This section of the stadium doesn&apos;t exist in our system. You may have taken a wrong turn — let Copilot guide you back.
+            This section of the stadium doesn&apos;t exist in our system. You
+            may have taken a wrong turn — let Copilot guide you back.
           </p>
         </div>
 
@@ -47,5 +48,5 @@ export default function NotFound() {
         </div>
       </div>
     </div>
-  )
+  );
 }

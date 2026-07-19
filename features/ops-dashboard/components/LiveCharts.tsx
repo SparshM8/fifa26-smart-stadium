@@ -1,7 +1,19 @@
-"use client"
-import * as React from "react"
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/design-system/Card"
-import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts"
+"use client";
+import * as React from "react";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+} from "@/components/design-system/Card";
+import {
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
 
 /** Shape of a single chart data point */
 interface ChartDataPoint {
@@ -30,7 +42,7 @@ function generateInitialData(): ChartDataPoint[] {
  * Updates every 3 seconds with memoized tick callback to avoid stale closures.
  */
 export function LiveCharts() {
-  const [data, setData] = React.useState<ChartDataPoint[]>(generateInitialData)
+  const [data, setData] = React.useState<ChartDataPoint[]>(generateInitialData);
 
   const tick = React.useCallback(() => {
     setData((currentData) => {
@@ -44,8 +56,14 @@ export function LiveCharts() {
         nextHour++;
       }
       const timeStr = `${nextHour}:${nextMin < 10 ? "0" + nextMin : nextMin}`;
-      const ingress = Math.max(0, last.ingress + Math.floor(Math.random() * 200) - 50);
-      return [...newData, { time: timeStr, ingress, egress: Math.floor(ingress * 0.1) }];
+      const ingress = Math.max(
+        0,
+        last.ingress + Math.floor(Math.random() * 200) - 50,
+      );
+      return [
+        ...newData,
+        { time: timeStr, ingress, egress: Math.floor(ingress * 0.1) },
+      ];
     });
   }, []);
 
@@ -61,10 +79,17 @@ export function LiveCharts() {
       </CardHeader>
       <CardContent className="h-[300px]">
         <ResponsiveContainer width="100%" height="100%">
-          <AreaChart data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+          <AreaChart
+            data={data}
+            margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+          >
             <defs>
               <linearGradient id="colorIngress" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="var(--primary)" stopOpacity={0.8} />
+                <stop
+                  offset="5%"
+                  stopColor="var(--primary)"
+                  stopOpacity={0.8}
+                />
                 <stop offset="95%" stopColor="var(--primary)" stopOpacity={0} />
               </linearGradient>
             </defs>

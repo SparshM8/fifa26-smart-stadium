@@ -20,25 +20,43 @@ export function Accessibility() {
 
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
         {[
-          { icon: Languages, title: "Real-time Translation", desc: "Live PA announcements translated to 40+ languages via the fan app." },
-          { icon: Ear, title: "Audio Descriptions", desc: "AI-generated spatial audio descriptions for visually impaired fans." },
-          { icon: Eye, title: "Visual Routing", desc: "AR-based navigation avoiding stairs for wheelchair accessibility." },
-          { icon: Globe2, title: "Cultural Context", desc: "Culturally-aware dietary and prayer room routing algorithms." },
+          {
+            icon: Languages,
+            title: "Real-time Translation",
+            desc: "Live PA announcements translated to 40+ languages via the fan app.",
+          },
+          {
+            icon: Ear,
+            title: "Audio Descriptions",
+            desc: "AI-generated spatial audio descriptions for visually impaired fans.",
+          },
+          {
+            icon: Eye,
+            title: "Visual Routing",
+            desc: "AR-based navigation avoiding stairs for wheelchair accessibility.",
+          },
+          {
+            icon: Globe2,
+            title: "Cultural Context",
+            desc: "Culturally-aware dietary and prayer room routing algorithms.",
+          },
         ].map((feature, i) => (
-           <motion.div 
+          <motion.div
             key={i}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1 }}
             className="bg-[#111] border border-white/5 rounded-3xl p-8 hover:bg-[#151515] transition-colors"
-           >
-              <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mb-6">
-                <feature.icon className="w-6 h-6 text-white" />
-              </div>
-              <h3 className="text-lg font-bold text-white mb-2">{feature.title}</h3>
-              <p className="text-sm text-zinc-400">{feature.desc}</p>
-           </motion.div>
+          >
+            <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mb-6">
+              <feature.icon className="w-6 h-6 text-white" />
+            </div>
+            <h3 className="text-lg font-bold text-white mb-2">
+              {feature.title}
+            </h3>
+            <p className="text-sm text-zinc-400">{feature.desc}</p>
+          </motion.div>
         ))}
       </div>
     </section>
