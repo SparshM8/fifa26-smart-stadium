@@ -48,7 +48,10 @@ export function AIPanel({ className }: { className?: string }) {
             placeholder="Ask AI..."
             className="w-full bg-black/40 border border-white/10 rounded-full px-4 py-3 text-sm text-white placeholder:text-zinc-600 focus:outline-none focus:border-[var(--accent-cyan)]/50 transition-colors font-sans"
           />
-          <button className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-[var(--accent-cyan)]/20 text-[var(--accent-cyan)] hover:bg-[var(--accent-cyan)]/30 transition-colors">
+          <button 
+            aria-label="Send message"
+            className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-[var(--accent-cyan)]/20 text-[var(--accent-cyan)] hover:bg-[var(--accent-cyan)]/30 transition-colors"
+          >
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>

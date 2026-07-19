@@ -117,7 +117,10 @@ export function FeatureBentoGrid() {
                   and emergency broadcasts.
                 </p>
               </div>
-              <button className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
+              <button 
+                aria-label="Learn more about enterprise integrations"
+                className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
+              >
                 <ArrowUpRight className="w-5 h-5 text-white" />
               </button>
             </div>

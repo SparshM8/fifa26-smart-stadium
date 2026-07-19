@@ -123,7 +123,10 @@ export function AIAssistantPreview() {
                   placeholder="Ask StadiumOS..."
                   className="w-full bg-[#111] border border-white/10 rounded-full px-4 py-3 text-sm text-white placeholder:text-zinc-600 focus:outline-none focus:border-emerald-500/50 transition-colors"
                 />
-                <button className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors">
+                <button 
+                  aria-label="Send message"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
+                >
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
