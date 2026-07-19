@@ -1,6 +1,4 @@
 @import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -39,7 +37,7 @@
   --danger: #EF4444;
   --warning: #F59E0B;
   
-  /* shadcn compat */
+  /* Extended design tokens */
   --card: rgba(255, 255, 255, 0.03);
   --card-foreground: #ffffff;
   --popover: #050816;
