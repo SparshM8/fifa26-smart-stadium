@@ -6,6 +6,7 @@ import { LocationMarker } from "./LocationMarker"
 interface InteractiveMapProps {
   layers: { heatmap: boolean; wheelchair: boolean; emergency: boolean }
   activeRoute: string | null
+  onSelectRoute?: (route: string) => void
 }
 
 // Coordinate mappings and route configurations for each destination
@@ -62,15 +63,15 @@ const DESTINATIONS: Record<
   },
 }
 
-// Seating Stand layout parameters
+// Seating Stand layout parameters with targets for interactive routing
 const SEATING_STANDS = [
-  { name: "NORTH STAND", x: 400, y: 80, rotate: 0 },
-  { name: "SOUTH STAND", x: 400, y: 720, rotate: 0 },
-  { name: "WEST STAND", x: 80, y: 400, rotate: -90 },
-  { name: "EAST STAND", x: 720, y: 400, rotate: 90 },
+  { name: "NORTH STAND", x: 400, y: 80, rotate: 0, target: "My Seat" },
+  { name: "SOUTH STAND", x: 400, y: 720, rotate: 0, target: "Parking" },
+  { name: "WEST STAND", x: 80, y: 400, rotate: -90, target: "Medical" },
+  { name: "EAST STAND", x: 720, y: 400, rotate: 90, target: "Restrooms" },
 ]
 
-export function InteractiveMap({ layers, activeRoute }: InteractiveMapProps) {
+export function InteractiveMap({ layers, activeRoute, onSelectRoute }: InteractiveMapProps) {
   const destConfig = activeRoute ? DESTINATIONS[activeRoute] : null
   const activePath = destConfig
     ? layers.wheelchair
@@ -207,174 +208,155 @@ export function InteractiveMap({ layers, activeRoute }: InteractiveMapProps) {
 
           {/* Seating Stand Labels */}
           {SEATING_STANDS.map((stand, i) => (
-            <text
+            <g
               key={i}
-              x={stand.x}
-              y={stand.y}
-              transform={`rotate(${stand.rotate}, ${stand.x}, ${stand.y})`}
-              fill="rgba(255,255,255,0.25)"
-              className="text-[11px] font-heading font-extrabold tracking-[0.25em]"
-              textAnchor="middle"
-              dominantBaseline="middle"
+              className="pointer-events-auto cursor-pointer group/stand"
+              onClick={() => onSelectRoute && onSelectRoute(stand.target)}
             >
-              {stand.name}
-            </text>
-          ))}
+              {/* Touch hit box */}
+              <circle cx={stand.x} cy={stand.y} r="40" fill="transparent" />
+              <text
+                x={stand.x}
+                y={stand.y}
+                transform={`rotate(${stand.rotate}, ${stand.x}, ${stand.y})`}
+                fill="rgba(255,255,255,0.35)"
+                className="text-[12px] font-heading font-extrabold tracking-[0.25em] transition-all hover:fill-[var(--accent-cyan)] select-none"
+                style={{ filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.5))" }}
+                textAnchor="middle"
+                dominantBaseline="middle"
+              >
+                {stand.name}
+              </text>
+            </g>
+          ))}          {/* Cyber Football Pitch (3D Isometric Slab Projection) */}
+          <g
+            className="pointer-events-auto cursor-pointer group/pitch"
+            onClick={() => onSelectRoute && onSelectRoute("My Seat")}
+          >
+            {/* Outer field glow */}
+            <rect
+              x="240"
+              y="290"
+              width="320"
+              height="220"
+              rx="15"
+              fill="url(#field-glow)"
+              className="transition-all duration-300 opacity-60 group-hover/pitch:opacity-100"
+            />
 
-          {/* ──────────────────────────────────────────────────────────── */}
-          {/* Premium Cyber Football Pitch                                 */}
-          {/* ──────────────────────────────────────────────────────────── */}
+            {/* 3D Depth Base (giving the pitch a volumetric slab thickness) */}
+            <rect
+              x="250"
+              y="306"
+              width="300"
+              height="200"
+              rx="10"
+              fill="#01241a"
+              opacity="0.8"
+            />
+            {/* 3D volumetric side edges */}
+            <polygon points="250,500 550,500 550,506 250,506" fill="rgba(0, 229, 255, 0.45)" />
+            <polygon points="550,300 550,500 556,500 556,300" fill="rgba(0, 229, 255, 0.25)" />
 
-          {/* Outer field glow */}
-          <rect
-            x="240"
-            y="290"
-            width="320"
-            height="220"
-            rx="15"
-            fill="url(#field-glow)"
-            className="transition-all"
-          />
+            {/* Grass Field Slab (Floating top layer) */}
+            <rect
+              x="250"
+              y="300"
+              width="300"
+              height="200"
+              rx="10"
+              fill="url(#cyber-pitch-grad)"
+              stroke="rgba(0, 229, 255, 0.55)"
+              strokeWidth="2"
+              style={{ filter: "drop-shadow(0 0 8px rgba(0, 229, 255, 0.3))" }}
+            />
 
-          {/* Grass Field Background */}
-          <rect
-            x="250"
-            y="300"
-            width="300"
-            height="200"
-            rx="10"
-            fill="url(#cyber-pitch-grad)"
-            stroke="rgba(0, 229, 255, 0.4)"
-            strokeWidth="1.5"
-            filter="url(#glow-filter)"
-          />
+            {/* Center Line */}
+            <line
+              x1="400"
+              y1="300"
+              x2="400"
+              y2="500"
+              stroke="rgba(255,255,255,0.3)"
+              strokeWidth="1.5"
+            />
 
-          {/* Center Line */}
-          <line
-            x1="400"
-            y1="300"
-            x2="400"
-            y2="500"
-            stroke="rgba(255,255,255,0.25)"
-            strokeWidth="1.5"
-          />
+            {/* Center Circle & Center Spot */}
+            <circle
+              cx="400"
+              cy="400"
+              r="35"
+              fill="none"
+              stroke="rgba(255,255,255,0.3)"
+              strokeWidth="1.5"
+            />
+            <circle cx="400" cy="400" r="2.5" fill="rgba(255,255,255,0.6)" />
 
-          {/* Center Circle & Center Spot */}
-          <circle
-            cx="400"
-            cy="400"
-            r="35"
-            fill="none"
-            stroke="rgba(255,255,255,0.25)"
-            strokeWidth="1.5"
-          />
-          <circle cx="400" cy="400" r="2.5" fill="rgba(255,255,255,0.5)" />
+            {/* Penalty Area Left */}
+            <rect
+              x="250"
+              y="335"
+              width="55"
+              height="130"
+              fill="none"
+              stroke="rgba(255,255,255,0.3)"
+              strokeWidth="1.5"
+            />
+            <path
+              d="M 305 380 A 25 25 0 0 1 305 420"
+              fill="none"
+              stroke="rgba(255,255,255,0.3)"
+              strokeWidth="1.5"
+            />
+            <rect
+              x="250"
+              y="365"
+              width="18"
+              height="70"
+              fill="none"
+              stroke="rgba(255,255,255,0.2)"
+              strokeWidth="1"
+            />
+            <circle cx="286.5" cy="400" r="2" fill="rgba(255,255,255,0.5)" />
 
-          {/* Penalty Area Left (18-yard box) */}
-          <rect
-            x="250"
-            y="335"
-            width="55"
-            height="130"
-            fill="none"
-            stroke="rgba(255,255,255,0.25)"
-            strokeWidth="1.5"
-          />
-          {/* Penalty Arc Left (D-Box) */}
-          <path
-            d="M 305 380 A 25 25 0 0 1 305 420"
-            fill="none"
-            stroke="rgba(255,255,255,0.25)"
-            strokeWidth="1.5"
-          />
-          {/* Goal Area Left (6-yard box) */}
-          <rect
-            x="250"
-            y="365"
-            width="18"
-            height="70"
-            fill="none"
-            stroke="rgba(255,255,255,0.2)"
-            strokeWidth="1"
-          />
-          {/* Penalty Spot Left */}
-          <circle cx="286.5" cy="400" r="2" fill="rgba(255,255,255,0.4)" />
+            {/* Penalty Area Right */}
+            <rect
+              x="495"
+              y="335"
+              width="55"
+              height="130"
+              fill="none"
+              stroke="rgba(255,255,255,0.3)"
+              strokeWidth="1.5"
+            />
+            <path
+              d="M 495 380 A 25 25 0 0 0 495 420"
+              fill="none"
+              stroke="rgba(255,255,255,0.3)"
+              strokeWidth="1.5"
+            />
+            <rect
+              x="532"
+              y="365"
+              width="18"
+              height="70"
+              fill="none"
+              stroke="rgba(255,255,255,0.2)"
+              strokeWidth="1"
+            />
+            <circle cx="513.5" cy="400" r="2" fill="rgba(255,255,255,0.5)" />
 
-          {/* Penalty Area Right (18-yard box) */}
-          <rect
-            x="495"
-            y="335"
-            width="55"
-            height="130"
-            fill="none"
-            stroke="rgba(255,255,255,0.25)"
-            strokeWidth="1.5"
-          />
-          {/* Penalty Arc Right (D-Box) */}
-          <path
-            d="M 495 380 A 25 25 0 0 0 495 420"
-            fill="none"
-            stroke="rgba(255,255,255,0.25)"
-            strokeWidth="1.5"
-          />
-          {/* Goal Area Right (6-yard box) */}
-          <rect
-            x="532"
-            y="365"
-            width="18"
-            height="70"
-            fill="none"
-            stroke="rgba(255,255,255,0.2)"
-            strokeWidth="1"
-          />
-          {/* Penalty Spot Right */}
-          <circle cx="513.5" cy="400" r="2" fill="rgba(255,255,255,0.4)" />
+            {/* Corner Arcs */}
+            <path d="M 250 306 A 6 6 0 0 1 256 300" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
+            <path d="M 250 494 A 6 6 0 0 0 256 500" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
+            <path d="M 550 306 A 6 6 0 0 0 544 300" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
+            <path d="M 550 494 A 6 6 0 0 1 544 500" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
 
-          {/* Corner Arcs */}
-          <path
-            d="M 250 306 A 6 6 0 0 1 256 300"
-            fill="none"
-            stroke="rgba(255,255,255,0.15)"
-            strokeWidth="1"
-          />
-          <path
-            d="M 250 494 A 6 6 0 0 0 256 500"
-            fill="none"
-            stroke="rgba(255,255,255,0.15)"
-            strokeWidth="1"
-          />
-          <path
-            d="M 550 306 A 6 6 0 0 0 544 300"
-            fill="none"
-            stroke="rgba(255,255,255,0.15)"
-            strokeWidth="1"
-          />
-          <path
-            d="M 550 494 A 6 6 0 0 1 544 500"
-            fill="none"
-            stroke="rgba(255,255,255,0.15)"
-            strokeWidth="1"
-          />
+            {/* Goals */}
+            <rect x="244" y="378" width="6" height="44" fill="none" stroke="rgba(0, 229, 255, 0.5)" strokeWidth="1" />
+            <rect x="550" y="378" width="6" height="44" fill="none" stroke="rgba(0, 229, 255, 0.5)" strokeWidth="1" />
+          </g>
 
-          {/* Goals (Goalpost outlines) */}
-          <rect
-            x="244"
-            y="378"
-            width="6"
-            height="44"
-            fill="none"
-            stroke="rgba(0, 229, 255, 0.4)"
-            strokeWidth="1"
-          />
-          <rect
-            x="550"
-            y="378"
-            width="6"
-            height="44"
-            fill="none"
-            stroke="rgba(0, 229, 255, 0.4)"
-            strokeWidth="1"
-          />
 
           {/* ──────────────────────────────────────────────────────────── */}
           {/* Stadium Gates & Outer Security Nodes                         */}
@@ -535,6 +517,63 @@ export function InteractiveMap({ layers, activeRoute }: InteractiveMapProps) {
             </motion.div>
           )}
         </AnimatePresence>
+
+        {/* Holographic Floating HUD Card for Upcoming Match Details & Venue */}
+        <div
+          className="absolute pointer-events-auto"
+          style={{
+            left: "50%",
+            top: "50%",
+            transform: "translate(-50%, -240px) translateZ(80px)",
+            transformStyle: "preserve-3d",
+          }}
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="w-[280px] bg-black/85 backdrop-blur-xl border border-[var(--accent-cyan)]/30 rounded-2xl p-4 shadow-[0_16px_40px_rgba(0,229,255,0.15)] flex flex-col gap-2 relative overflow-hidden group select-none"
+            style={{ transform: "rotateX(5deg)" }}
+          >
+            {/* Ambient neon scanning effect */}
+            <div className="absolute inset-0 bg-gradient-to-b from-[var(--accent-cyan)]/5 to-transparent pointer-events-none" />
+            <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-[var(--accent-cyan)] to-transparent opacity-85 animate-pulse" />
+            
+            {/* Header / Venue info */}
+            <div className="flex items-center justify-between text-[9px] font-bold text-[var(--accent-cyan)] tracking-widest uppercase font-mono">
+              <span>FIFA WORLD CUP 2026</span>
+              <span className="px-1.5 py-0.5 rounded bg-[var(--accent-cyan)]/10 border border-[var(--accent-cyan)]/25">HOST VENUE</span>
+            </div>
+
+            <div className="text-zinc-400 text-[10.5px] font-mono tracking-wide flex items-center gap-1.5 mt-0.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              MetLife Stadium · NJ, USA
+            </div>
+
+            {/* Teams Match Scoreboard */}
+            <div className="flex items-center justify-between py-2 border-t border-b border-white/5 my-1">
+              <div className="flex items-center gap-2.5">
+                <span className="text-xs font-black text-white font-sans tracking-wide">ARGENTINA</span>
+                <span className="text-[10px] font-extrabold text-zinc-500 font-mono">VS</span>
+                <span className="text-xs font-black text-white font-sans tracking-wide">FRANCE</span>
+              </div>
+              <div className="text-[10px] text-zinc-400 font-bold font-mono">UPCOMING</div>
+            </div>
+
+            {/* Kickoff info & Quick route */}
+            <div className="flex items-center justify-between mt-0.5 gap-2">
+              <div className="text-[9px] text-zinc-500 font-mono leading-none">
+                KICKOFF: JULY 19 · 18:00 EST
+              </div>
+              <button
+                onClick={() => onSelectRoute && onSelectRoute("My Seat")}
+                className="px-2.5 py-1.5 rounded-lg bg-[var(--primary)] text-white text-[9.5px] font-extrabold tracking-wider uppercase transition-all hover:bg-blue-600 active:scale-95 flex items-center gap-1 cursor-pointer"
+              >
+                <span>My Seat Route</span>
+              </button>
+            </div>
+          </motion.div>
+        </div>
 
         {/* Current Location Marker */}
         <div style={{ transform: "translateZ(40px)" }} className="absolute inset-0 pointer-events-none">

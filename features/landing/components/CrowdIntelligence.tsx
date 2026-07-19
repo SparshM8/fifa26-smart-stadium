@@ -2,8 +2,11 @@
 
 import { motion } from "framer-motion";
 import { Users, TrendingUp } from "lucide-react";
+import { useI18n } from "@/context/I18nContext";
 
 export function CrowdIntelligence() {
+  const { t } = useI18n();
+
   return (
     <section className="py-24 max-w-7xl mx-auto px-6 border-t border-white/5">
       <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -21,7 +24,7 @@ export function CrowdIntelligence() {
                <TrendingUp className="w-4 h-4 text-blue-500" />
              </div>
              <span className="text-white font-medium">Predictive Flow</span>
-          </div>
+           </div>
 
           {/* Fake Bar Chart */}
           <div className="flex items-end gap-2 h-48 w-full">
@@ -55,11 +58,11 @@ export function CrowdIntelligence() {
             <Users className="w-4 h-4" />
             <span>Crowd Control</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6">
-            Predict the bottleneck, <br className="hidden md:block" /> before the jam.
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6 font-heading">
+            {t.sections.crowdTitle}
           </h2>
-          <p className="text-lg text-zinc-400 mb-8">
-            Leveraging historical data and real-time computer vision, StadiumOS predicts crowd movement patterns with 94% accuracy, automatically adjusting digital signage to redirect flow.
+          <p className="text-lg text-zinc-400 mb-8 font-sans">
+            {t.sections.crowdDesc}
           </p>
           
           <div className="grid grid-cols-2 gap-6">

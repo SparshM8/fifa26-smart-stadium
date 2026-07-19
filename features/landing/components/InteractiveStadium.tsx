@@ -1,18 +1,21 @@
 "use client";
 
+import { useI18n } from "@/context/I18nContext";
 import { motion } from "framer-motion";
 
 export function InteractiveStadium() {
+  const { t } = useI18n();
+
   return (
     <section className="py-32 relative overflow-hidden flex flex-col items-center justify-center bg-[#03050c]">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-950/10 via-[#03050c] to-[#03050c] pointer-events-none" />
       
       <div className="text-center z-10 mb-16 px-6">
         <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-4 font-heading">
-          A living, breathing venue.
+          {t.sections.stadiumTitle}
         </h2>
         <p className="text-zinc-400 max-w-2xl mx-auto font-sans leading-relaxed">
-          See the entire stadium at a glance. Detect crowd density shifts, temperature anomalies, and security events in real-time.
+          {t.sections.stadiumDesc}
         </p>
       </div>
 

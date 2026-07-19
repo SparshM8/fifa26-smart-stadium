@@ -4,54 +4,60 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import { Users, Shield, Bot, Map, ArrowRight } from "lucide-react"
 
-const ROLES = [
-  {
-    id: "fan",
-    label: "Fan",
-    description: "Your personalized matchday hub — ticket, navigation, queues & AI assistant.",
-    href: "/dashboard",
-    icon: Users,
-    gradient: "from-blue-600/20 to-blue-800/5",
-    border: "border-blue-500/30",
-    iconColor: "text-blue-400",
-    cta: "Open Fan Hub",
-  },
-  {
-    id: "organizer",
-    label: "Organizer",
-    description: "Mission-control operations dashboard — crowd, incidents, transport & KPIs.",
-    href: "/ops",
-    icon: Shield,
-    gradient: "from-rose-600/20 to-rose-800/5",
-    border: "border-rose-500/30",
-    iconColor: "text-rose-400",
-    cta: "Open Command",
-  },
-  {
-    id: "copilot",
-    label: "AI Copilot",
-    description: "Full-page stadium AI for navigation queries, incident triage & real-time decisions.",
-    href: "/copilot",
-    icon: Bot,
-    gradient: "from-cyan-600/20 to-cyan-800/5",
-    border: "border-cyan-500/30",
-    iconColor: "text-[var(--accent-cyan)]",
-    cta: "Open Copilot",
-  },
-  {
-    id: "map",
-    label: "Smart Map",
-    description: "Interactive stadium navigation with wheelchair routes, heatmap & emergency exits.",
-    href: "/map",
-    icon: Map,
-    gradient: "from-emerald-600/20 to-emerald-800/5",
-    border: "border-emerald-500/30",
-    iconColor: "text-emerald-400",
-    cta: "Open Map",
-  },
-]
+
+
+import { useI18n } from "@/context/I18nContext"
 
 export function RoleSelector() {
+  const { t } = useI18n()
+
+  const roles = [
+    {
+      id: "fan",
+      label: t.roles.fan.label,
+      description: t.roles.fan.description,
+      href: "/dashboard",
+      icon: Users,
+      gradient: "from-blue-600/20 to-blue-800/5",
+      border: "border-blue-500/30",
+      iconColor: "text-blue-400",
+      cta: t.roles.fan.cta,
+    },
+    {
+      id: "organizer",
+      label: t.roles.organizer.label,
+      description: t.roles.organizer.description,
+      href: "/ops",
+      icon: Shield,
+      gradient: "from-rose-600/20 to-rose-800/5",
+      border: "border-rose-500/30",
+      iconColor: "text-rose-400",
+      cta: t.roles.organizer.cta,
+    },
+    {
+      id: "copilot",
+      label: t.roles.copilot.label,
+      description: t.roles.copilot.description,
+      href: "/copilot",
+      icon: Bot,
+      gradient: "from-cyan-600/20 to-cyan-800/5",
+      border: "border-cyan-500/30",
+      iconColor: "text-[var(--accent-cyan)]",
+      cta: t.roles.copilot.cta,
+    },
+    {
+      id: "map",
+      label: t.roles.map.label,
+      description: t.roles.map.description,
+      href: "/map",
+      icon: Map,
+      gradient: "from-emerald-600/20 to-emerald-800/5",
+      border: "border-emerald-500/30",
+      iconColor: "text-emerald-400",
+      cta: t.roles.map.cta,
+    },
+  ]
+
   return (
     <section className="py-24 px-4" aria-labelledby="role-selector-heading">
       <div className="max-w-6xl mx-auto">
@@ -60,15 +66,15 @@ export function RoleSelector() {
             id="role-selector-heading"
             className="font-heading text-4xl font-bold text-white mb-4"
           >
-            Built for Every Role
+            {t.roles.heading}
           </h2>
           <p className="text-zinc-400 text-lg max-w-2xl mx-auto font-sans">
-            StadiumOS AI adapts to your role. Choose your experience to get started.
+            {t.roles.subheading}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {ROLES.map((role, i) => (
+          {roles.map((role, i) => (
             <motion.div
               key={role.id}
               initial={{ opacity: 0, y: 20 }}

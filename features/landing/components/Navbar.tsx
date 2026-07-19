@@ -65,7 +65,7 @@ export function Navbar() {
 
           <Link
             href="/dashboard"
-            className="hidden md:block h-10 px-6 rounded-full bg-white text-black text-sm font-bold hover:bg-zinc-200 active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            className="hidden md:inline-flex items-center justify-center h-10 px-6 rounded-full bg-white text-black text-sm font-bold hover:bg-zinc-200 active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
           >
             {t.nav.getDemo}
           </Link>

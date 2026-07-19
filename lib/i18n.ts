@@ -89,6 +89,16 @@ export interface Translations {
     minutes: string;
     noWait: string;
   };
+  sections: {
+    stadiumTitle: string;
+    stadiumDesc: string;
+    copilotTitle: string;
+    copilotDesc: string;
+    crowdTitle: string;
+    crowdDesc: string;
+    accessTitle: string;
+    accessDesc: string;
+  };
 }
 
 const TRANSLATIONS: Record<SupportedLocale, Translations> = {
@@ -154,6 +164,16 @@ const TRANSLATIONS: Record<SupportedLocale, Translations> = {
       minutes: "min",
       noWait: "No wait",
     },
+    sections: {
+      stadiumTitle: "A living, breathing venue.",
+      stadiumDesc: "See the entire stadium at a glance. Detect crowd density shifts, temperature anomalies, and security events in real-time.",
+      copilotTitle: "Your operations co-pilot, powered by Generative AI.",
+      copilotDesc: "StadiumOS doesn't just show data; it understands context. Ask complex questions about crowd density, resource allocation, or emergency protocols, and get actionable intelligence instantly.",
+      crowdTitle: "Predict the bottleneck, before the jam.",
+      crowdDesc: "Leveraging historical data and real-time computer vision, StadiumOS predicts crowd movement patterns with 94% accuracy, automatically adjusting digital signage to redirect flow.",
+      accessTitle: "A World Cup for the World.",
+      accessDesc: "Breaking down barriers with AI-powered accessibility tools built natively into the platform.",
+    },
   },
 
   es: {
@@ -217,6 +237,16 @@ const TRANSLATIONS: Record<SupportedLocale, Translations> = {
       normal: "Normal",
       minutes: "min",
       noWait: "Sin espera",
+    },
+    sections: {
+      stadiumTitle: "Un lugar vivo y vibrante.",
+      stadiumDesc: "Vea todo el estadio de un vistazo. Detecte cambios de densidad de multitud, anomalías de temperatura y eventos de seguridad en tiempo real.",
+      copilotTitle: "Su copiloto de operaciones, impulsado por IA Generativa.",
+      copilotDesc: "StadiumOS no solo muestra datos; entiende el contexto. Realice preguntas complejas sobre densidad de multitudes o protocolos de emergencia y obtenga información útil al instante.",
+      crowdTitle: "Prediga el embotellamiento, antes de que ocurra.",
+      crowdDesc: "Aprovechando datos históricos y visión por computadora en tiempo real, StadiumOS predice patrones de flujo con un 94% de precisión y ajusta señales digitales automáticamente.",
+      accessTitle: "Una Copa del Mundo para el Mundo.",
+      accessDesc: "Rompiendo barreras con herramientas de accesibilidad nativas impulsadas por inteligencia artificial.",
     },
   },
 
@@ -282,6 +312,16 @@ const TRANSLATIONS: Record<SupportedLocale, Translations> = {
       minutes: "min",
       noWait: "Pas d'attente",
     },
+    sections: {
+      stadiumTitle: "Un stade vivant et connecté.",
+      stadiumDesc: "Visualisez tout le stade en un coup d'œil. Détectez les flux de foule, anomalies thermiques et alertes de sécurité en temps réel.",
+      copilotTitle: "Votre copilote opérationnel, propulsé par l'IA Générative.",
+      copilotDesc: "StadiumOS ne se contente pas d'afficher des données, il en comprend le contexte. Posez des questions complexes sur les foules ou la sécurité et obtenez des réponses instantanées.",
+      crowdTitle: "Anticipez les goulets d'étranglement avant qu'ils ne se forment.",
+      crowdDesc: "Grâce aux données historiques et à la vision par ordinateur, StadiumOS prédit les mouvements de foule avec 94% de précision.",
+      accessTitle: "Une Coupe du Monde pour le Monde entier.",
+      accessDesc: "Brisez les barrières grâce à des outils d'accessibilité natifs dotés d'intelligence artificielle.",
+    },
   },
 
   ar: {
@@ -346,6 +386,16 @@ const TRANSLATIONS: Record<SupportedLocale, Translations> = {
       minutes: "دقيقة",
       noWait: "لا انتظار",
     },
+    sections: {
+      stadiumTitle: "مكان حي ونابض بالحياة.",
+      stadiumDesc: "شاهد الملعب بأكمله بلمحة سريعة. اكتشف التغيرات في كثافة الحشود، والتقلبات الحرارية، والأحداث الأمنية في الوقت الفعلي.",
+      copilotTitle: "مساعد العمليات الخاص بك، مدعوم بالذكاء الاصطناعي التوليدي.",
+      copilotDesc: "لا يعرض StadiumOS البيانات فحسب؛ بل يفهم السياق. اطرح أسئلة معقدة حول كثافة الحشود أو بروتوكولات الطوارئ واحصل على إجابات فورية.",
+      crowdTitle: "توقع الاختناقات قبل حدوثها.",
+      crowdDesc: "باستخدام البيانات التاريخية والرؤية الحاسوبية، يتوقع StadiumOS أنماط حركة الحشود بدقة 94٪، ويعدل اللوحات الرقمية تلقائيًا.",
+      accessTitle: "كأس عالم للعالم بأكمله.",
+      accessDesc: "كسر الحواجز باستخدام أدوات إمكانية الوصول المدعومة بالذكاء الاصطناعي والمدمجة في المنصة.",
+    },
   },
 
   pt: {
@@ -409,6 +459,16 @@ const TRANSLATIONS: Record<SupportedLocale, Translations> = {
       normal: "Normal",
       minutes: "min",
       noWait: "Sem espera",
+    },
+    sections: {
+      stadiumTitle: "Um local vivo e pulsante.",
+      stadiumDesc: "Veja todo o estádio de relance. Detecte fluxos de multidão, anomalias de temperatura e alertas de segurança em tempo real.",
+      copilotTitle: "Seu copiloto de operações, alimentado por IA Generativa.",
+      copilotDesc: "O StadiumOS não apenas exibe dados; ele entende o contexto. Faça perguntas complexas sobre densidade ou segurança e obteneu respostas imediatas.",
+      crowdTitle: "Preveja o congestionamento antes que ele aconteça.",
+      crowdDesc: "Aproveitando dados históricos e visão computacional, o StadiumOS prevê movimentos com 94% de eficiência, ajustando painéis digitais automaticamente.",
+      accessTitle: "Uma Copa do Mundo para o Mundo inteiro.",
+      accessDesc: "Quebrando barreiras com ferramentas nativas de acessibilidade alimentadas por inteligência artificial.",
     },
   },
 };

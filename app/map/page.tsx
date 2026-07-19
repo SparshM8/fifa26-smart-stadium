@@ -50,7 +50,7 @@ export default function SmartNavigationPage() {
 
       {/* Main Map Background */}
       <main className="absolute inset-0 z-0">
-        <InteractiveMap layers={layers} activeRoute={activeRoute} />
+        <InteractiveMap layers={layers} activeRoute={activeRoute} onSelectRoute={handleRoute} />
       </main>
 
       {/* Floating UI Elements */}

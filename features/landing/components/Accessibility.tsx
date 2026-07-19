@@ -2,13 +2,20 @@
 
 import { motion } from "framer-motion";
 import { Globe2, Ear, Eye, Languages } from "lucide-react";
+import { useI18n } from "@/context/I18nContext";
 
 export function Accessibility() {
+  const { t } = useI18n();
+
   return (
     <section id="accessibility" className="py-24 max-w-7xl mx-auto px-6">
       <div className="text-center mb-16">
-        <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-4">A World Cup for the World.</h2>
-        <p className="text-zinc-400 max-w-2xl mx-auto">Breaking down barriers with AI-powered accessibility tools built natively into the platform.</p>
+        <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-4 font-heading">
+          {t.sections.accessTitle}
+        </h2>
+        <p className="text-zinc-400 max-w-2xl mx-auto font-sans">
+          {t.sections.accessDesc}
+        </p>
       </div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">

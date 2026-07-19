@@ -3,8 +3,12 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 import { useRef } from "react";
+import Link from "next/link";
+
+import { useI18n } from "@/context/I18nContext";
 
 export function HeroSection() {
+  const { t } = useI18n();
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -35,16 +39,16 @@ export function HeroSection() {
           className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-8"
         >
           <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-          <span className="text-sm font-medium text-zinc-300">FIFA World Cup 2026 Ready</span>
+          <span className="text-sm font-medium text-zinc-300">{t.hero.badge}</span>
         </motion.div>
 
         <motion.h1 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-6xl md:text-8xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-white/90 to-white/50 mb-8 leading-[1.1]"
+          className="text-5xl md:text-7xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-white/90 to-white/50 mb-8 leading-[1.1] font-heading"
         >
-          The Operating System <br className="hidden md:block" /> for Smart Stadiums.
+          {t.hero.title}
         </motion.h1>
 
         <motion.p 
@@ -53,8 +57,7 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto mb-12"
         >
-          Unify crowd intelligence, security, and operations into one beautiful generative AI platform. 
-          Built for the scale of the world's largest tournament.
+          {t.hero.subtitle}
         </motion.p>
 
         <motion.div 
@@ -63,12 +66,12 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="flex flex-col sm:flex-row items-center gap-4"
         >
-          <button className="h-12 px-8 rounded-full bg-white text-black font-semibold hover:scale-105 transition-transform flex items-center gap-2">
-            Deploy Now
+          <Link href="/dashboard" className="h-12 px-8 rounded-full bg-white text-black font-semibold hover:scale-105 transition-transform flex items-center justify-center gap-2">
+            {t.hero.ctaPrimary}
             <ChevronRight className="w-4 h-4" />
-          </button>
-          <button className="h-12 px-8 rounded-full bg-white/5 text-white font-medium border border-white/10 hover:bg-white/10 transition-colors">
-            Watch Technical Keynote
+          </Link>
+          <button className="h-12 px-8 rounded-full bg-white/5 text-white font-medium border border-white/10 hover:bg-white/10 transition-colors flex items-center justify-center">
+            {t.hero.ctaSecondary}
           </button>
         </motion.div>
       </motion.div>

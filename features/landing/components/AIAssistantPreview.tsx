@@ -2,8 +2,11 @@
 
 import { motion } from "framer-motion";
 import { Sparkles, ArrowRight, ShieldCheck, Thermometer, User } from "lucide-react";
+import { useI18n } from "@/context/I18nContext";
 
 export function AIAssistantPreview() {
+  const { t } = useI18n();
+
   return (
     <section id="intelligence" className="py-32 relative max-w-7xl mx-auto px-6">
       <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -19,11 +22,11 @@ export function AIAssistantPreview() {
             <Sparkles className="w-4 h-4" />
             <span>Context-Aware AI</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6">
-            Your operations co-pilot, <br className="hidden md:block" /> powered by Generative AI.
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6 font-heading">
+            {t.sections.copilotTitle}
           </h2>
-          <p className="text-lg text-zinc-400 mb-8">
-            StadiumOS doesn't just show data; it understands context. Ask complex questions about crowd density, resource allocation, or emergency protocols, and get actionable intelligence instantly.
+          <p className="text-lg text-zinc-400 mb-8 font-sans">
+            {t.sections.copilotDesc}
           </p>
           
           <ul className="space-y-4 mb-8">
