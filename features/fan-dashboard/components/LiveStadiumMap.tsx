@@ -42,15 +42,27 @@ export function LiveStadiumMap() {
         </span>
       </div>
 
-      {/* Fake Path Line */}
-      <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ filter: "drop-shadow(0 0 5px rgba(37, 99, 235, 0.5))" }}>
-        <path 
-          d="M 50% 50% Q 60% 40% 66% 33%" 
-          fill="transparent" 
-          stroke="var(--primary)" 
-          strokeWidth="2" 
-          strokeDasharray="4 4" 
+      {/* Route path line — uses viewBox coords so numbers are device-independent */}
+      <svg
+        className="absolute inset-0 w-full h-full pointer-events-none"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+        style={{ filter: "drop-shadow(0 0 3px rgba(37, 99, 235, 0.6))" }}
+        aria-hidden="true"
+      >
+        {/* Dashed route from current position (50,50) to destination (66,33) */}
+        <path
+          d="M 50 50 Q 60 40 66 33"
+          fill="none"
+          stroke="var(--primary)"
+          strokeWidth="1.5"
+          strokeDasharray="3 3"
+          strokeLinecap="round"
         />
+        {/* Animated moving dot along the route */}
+        <circle r="1.5" fill="var(--accent-cyan)" opacity="0.9">
+          <animateMotion dur="2s" repeatCount="indefinite" path="M 50 50 Q 60 40 66 33" />
+        </circle>
       </svg>
 
       {/* UI Overlay linking to `/map` */}
