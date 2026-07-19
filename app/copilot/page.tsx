@@ -39,7 +39,9 @@ export default function CopilotPage() {
       const params = new URLSearchParams(window.location.search)
       const query = params.get("q")
       if (query) {
-        handleInput(decodeURIComponent(query))
+        setTimeout(() => {
+          handleInput(decodeURIComponent(query))
+        }, 0)
         // Clean query param from browser bar to prevent duplicate runs on reload
         window.history.replaceState({}, document.title, window.location.pathname)
       }

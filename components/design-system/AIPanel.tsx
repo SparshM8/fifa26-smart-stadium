@@ -26,7 +26,7 @@ export function AIPanel({ className }: { className?: string }) {
             <Sparkles className="w-4 h-4 text-[var(--accent-cyan)]" />
           </div>
           <div className="bg-[var(--accent-cyan)]/10 border border-[var(--accent-cyan)]/20 rounded-2xl rounded-tl-sm p-4 text-sm text-white">
-            I've detected a 15% increase in traffic at Gate D. Would you like me to reroute incoming fans?
+            I&apos;ve detected a 15% increase in traffic at Gate D. Would you like me to reroute incoming fans?
           </div>
         </div>
       </div>

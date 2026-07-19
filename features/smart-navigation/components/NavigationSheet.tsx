@@ -1,7 +1,7 @@
 "use client"
 import * as React from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Search, Utensils, Droplets, HeartPulse, Car, ArrowUpRight, Compass, Navigation } from "lucide-react"
+import { Search, Utensils, Droplets, HeartPulse, Car, ArrowUpRight, Navigation } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 export interface NavigationSheetProps {
@@ -72,6 +72,7 @@ const ROUTE_DETAILS: Record<
 export function NavigationSheet({ onRoute, activeRoute }: NavigationSheetProps) {
   const [isExpanded, setIsExpanded] = React.useState(true)
   const [searchQuery, setSearchQuery] = React.useState("")
+  const [prevRoute, setPrevRoute] = React.useState<string | null>(null)
 
   const categories = [
     { id: "food", icon: Utensils, label: "Food", color: "bg-orange-500/10 text-orange-400 border-orange-500/20" },
@@ -82,12 +83,13 @@ export function NavigationSheet({ onRoute, activeRoute }: NavigationSheetProps) 
 
   const activeDetails = activeRoute ? ROUTE_DETAILS[activeRoute] : null
 
-  // Auto-expand when a route becomes active
-  React.useEffect(() => {
+  // Adjust state when activeRoute changes during render
+  if (activeRoute !== prevRoute) {
+    setPrevRoute(activeRoute)
     if (activeRoute) {
       setIsExpanded(true)
     }
-  }, [activeRoute])
+  }
 
   return (
     <motion.div

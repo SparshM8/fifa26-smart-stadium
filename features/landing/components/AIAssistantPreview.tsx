@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Sparkles, ArrowRight, ShieldCheck, Thermometer, User } from "lucide-react";
+import { Sparkles, ArrowRight, ShieldCheck, User } from "lucide-react";
 import { useI18n } from "@/context/I18nContext";
 
 export function AIAssistantPreview() {
@@ -81,7 +81,7 @@ export function AIAssistantPreview() {
                   <User className="w-4 h-4 text-zinc-400" />
                 </div>
                 <div className="bg-[#1a1a1a] rounded-2xl rounded-tl-sm p-4 text-sm text-zinc-300 border border-white/5">
-                  Gate C is seeing a 40% spike in traffic. What's the protocol?
+                  Gate C is seeing a 40% spike in traffic. What&apos;s the protocol?
                 </div>
               </div>
 
@@ -90,7 +90,7 @@ export function AIAssistantPreview() {
                   <Sparkles className="w-4 h-4 text-white" />
                 </div>
                 <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-2xl rounded-tr-sm p-4 text-sm text-emerald-50">
-                  <p className="mb-3">I've analyzed the heatmaps. The surge is due to a delayed train arrival.</p>
+                  <p className="mb-3">I&apos;ve analyzed the heatmaps. The surge is due to a delayed train arrival.</p>
                   <p className="mb-3 font-medium">Recommended Actions:</p>
                   <ul className="space-y-2 mb-3">
                     <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-emerald-500" /> Open overflow turnstiles 4-8.</li>

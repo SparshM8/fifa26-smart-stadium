@@ -73,7 +73,7 @@ export function Sidebar() {
           <div className="w-2 h-2 rounded-full bg-[var(--danger)] animate-pulse shrink-0" />
           <div>
             <div className="text-[10px] font-bold text-[var(--danger)] uppercase tracking-wider">Live Match</div>
-            <div className="text-[11px] text-zinc-300 font-mono">ARG 2 – 1 FRA · 67'</div>
+            <div className="text-[11px] text-zinc-300 font-mono">ARG 2 – 1 FRA · 67&apos;</div>
           </div>
         </div>
       </div>

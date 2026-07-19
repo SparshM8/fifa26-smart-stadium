@@ -20,19 +20,19 @@ const STORAGE_KEY = "stadiumos-locale";
  * to all child components via the useI18n hook.
  */
 export function I18nProvider({ children }: { children: React.ReactNode }) {
-  const [locale, setLocaleState] = React.useState<SupportedLocale>("en");
-
-  // Restore saved locale preference on mount
-  React.useEffect(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY) as SupportedLocale | null;
-      if (saved && SUPPORTED_LOCALES.some((l) => l.code === saved)) {
-        setLocaleState(saved);
+  const [locale, setLocaleState] = React.useState<SupportedLocale>(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY) as SupportedLocale | null;
+        if (saved && SUPPORTED_LOCALES.some((l) => l.code === saved)) {
+          return saved;
+        }
+      } catch {
+        // ignore
       }
-    } catch {
-      // localStorage unavailable in some environments
     }
-  }, []);
+    return "en";
+  });
 
   // Update <html> lang + dir attributes on locale change
   React.useEffect(() => {

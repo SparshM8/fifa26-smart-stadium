@@ -20,7 +20,9 @@ export default function SmartNavigationPage() {
         const formattedDest = dest.charAt(0).toUpperCase() + dest.slice(1).toLowerCase()
         const validDests = ["Food", "Restrooms", "Medical", "Parking", "My Seat"]
         if (validDests.includes(formattedDest)) {
-          setActiveRoute(formattedDest)
+          setTimeout(() => {
+            setActiveRoute(formattedDest)
+          }, 0)
         }
       }
     }

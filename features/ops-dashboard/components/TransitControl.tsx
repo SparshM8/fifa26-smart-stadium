@@ -1,7 +1,7 @@
 "use client"
 import * as React from "react"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/design-system/Card"
-import { Train, Car, Navigation } from "lucide-react"
+import { Train, Car } from "lucide-react"
 import { motion } from "framer-motion"
 
 export function TransitControl() {

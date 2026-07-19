@@ -27,7 +27,7 @@ export function LiveMatchCard() {
           </div>
           
           <div className="absolute top-6 right-6 text-xs text-zinc-500 font-mono">
-            78' (2nd Half)
+            78&apos; (2nd Half)
           </div>
 
           {/* Team 1 */}
